@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6基础语法（一） 变量 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="前言什么是ES6（ES2015）:全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。1、变量的声明方法（1）var（缺点）：a、可以重复的声明；（语言过于松散）b、没用办法控制修改；（不能限制修改，谁都可以修改）c、函数级作用。（想要使用用块级就要包一层函数，过于麻烦） （2）新增的声明方法">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6基础语法（一） 变量">
+<meta property="og:url" content="http://yoursite.com/2019/03/16/ES6基础语法（一）-变量/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="前言什么是ES6（ES2015）:全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。1、变量的声明方法（1）var（缺点）：a、可以重复的声明；（语言过于松散）b、没用办法控制修改；（不能限制修改，谁都可以修改）c、函数级作用。（想要使用用块级就要包一层函数，过于麻烦） （2）新增的声明方法">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-16T08:12:16.349Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6基础语法（一） 变量">
+<meta name="twitter:description" content="前言什么是ES6（ES2015）:全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。1、变量的声明方法（1）var（缺点）：a、可以重复的声明；（语言过于松散）b、没用办法控制修改；（不能限制修改，谁都可以修改）c、函数级作用。（想要使用用块级就要包一层函数，过于麻烦） （2）新增的声明方法">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-ES6基础语法（一）-变量" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6基础语法（一） 变量
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/16/ES6基础语法（一）-变量/" class="article-date">
+  <time datetime="2019-03-16T07:54:09.000Z" itemprop="datePublished">2019-03-16</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h4 id="什么是ES6（ES2015）-全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。"><a href="#什么是ES6（ES2015）-全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。" class="headerlink" title="什么是ES6（ES2015）:全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。"></a>什么是ES6（ES2015）:全名ECMAScript，是javascript的一个标准，而javascript是ES6的实现。</h4><h4 id="为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。"><a href="#为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。" class="headerlink" title="为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。"></a>为什么使用ES6：支持更多的语法，使用更方便，增强的工程性。</h4><h2 id="1、变量的声明方法"><a href="#1、变量的声明方法" class="headerlink" title="1、变量的声明方法"></a>1、变量的声明方法</h2><h3 id="（1）var（缺点）："><a href="#（1）var（缺点）：" class="headerlink" title="（1）var（缺点）："></a>（1）var（缺点）：</h3><p>a、可以重复的声明；（语言过于松散）<br>b、没用办法控制修改；（不能限制修改，谁都可以修改）<br>c、函数级作用。（想要使用用块级就要包一层函数，过于麻烦）</p>
+<h3 id="（2）新增的声明方法："><a href="#（2）新增的声明方法：" class="headerlink" title="（2）新增的声明方法："></a>（2）新增的声明方法：</h3><p>a、let：变量，不可重复声明，具有块级作用域（一个花括号就代表一个块级）<br>b、const：常量 不可重复声明，一旦赋值不能修改 </p>
+<h3 id="块级作用域Demo："><a href="#块级作用域Demo：" class="headerlink" title="块级作用域Demo："></a>块级作用域Demo：</h3><h4 id="相同的html代码："><a href="#相同的html代码：" class="headerlink" title="相同的html代码："></a>相同的html代码：</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;input type=&quot;button&quot; value=&quot;a&quot; /&gt;</span><br><span class="line">   &lt;input type=&quot;button&quot; value=&quot;b&quot; /&gt;</span><br><span class="line">   &lt;input type=&quot;button&quot; value=&quot;c&quot; /&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></div>
+<h4 id="使用var的错误写法："><a href="#使用var的错误写法：" class="headerlink" title="使用var的错误写法："></a>使用var的错误写法：</h4><h4 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let aBtn = document.getElementsByTagName(&apos;input&apos;); </span><br><span class="line">for(var i = 0;i&lt;3;i++)&#123;</span><br><span class="line">   aBtn[i].onclick=function()&#123;</span><br><span class="line">      alert(i);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>错误原因：var的作用域是函数，这三个button共用一个i，方法是加载到队列中当循环结束以后才会执行，所以当点击事件执行时，此时循环执行完毕，i已经变成了3，所以点击按钮alert的都是3。</p>
+<h4 id="使用var的正确写法："><a href="#使用var的正确写法：" class="headerlink" title="使用var的正确写法："></a>使用var的正确写法：</h4><h4 id="js代码-1"><a href="#js代码-1" class="headerlink" title="js代码"></a>js代码</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let aBtn = document.getElementsByTagName(&apos;input&apos;); </span><br><span class="line">for(var i = 0;i&lt;3;i++)&#123;</span><br><span class="line">   (function()&#123;</span><br><span class="line">      aBtn[i].onclick=function()&#123;</span><br><span class="line">         alert(i);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>成功原因：var的作用域是函数，所以给每一个btn的点击事件包一个函数，给其一个函数级的作用域，每个btn拥有自己的i，不会干扰到其他的btn。</p>
+<h4 id="使用let的写法："><a href="#使用let的写法：" class="headerlink" title="使用let的写法："></a>使用let的写法：</h4><h4 id="js代码-2"><a href="#js代码-2" class="headerlink" title="js代码"></a>js代码</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let aBtn = document.getElementsByTagName(&apos;input&apos;); </span><br><span class="line">for(let i = 0;i&lt;3;i++)&#123;</span><br><span class="line">   aBtn[i].onclick=function()&#123;</span><br><span class="line">      alert(i);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>成功原因：let的作用域是代码块级，所以给每一个btn本身就独自拥有一个i，使得不会相互干扰。</p>
+<h2 id="2、解构赋值（为了方便，适合从大的结构中取数据）"><a href="#2、解构赋值（为了方便，适合从大的结构中取数据）" class="headerlink" title="2、解构赋值（为了方便，适合从大的结构中取数据）"></a>2、解构赋值（为了方便，适合从大的结构中取数据）</h2><h3 id="（1）：json赋值"><a href="#（1）：json赋值" class="headerlink" title="（1）：json赋值"></a>（1）：json赋值</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">json=&#123;a:12,b:5&#125;;</span><br><span class="line">let &#123;a,b&#125;=json;</span><br></pre></td></tr></table></figure></div>
+<p>注意：变量的名字要和json的字段相同。</p>
+<h3 id="（2）：数组赋值"><a href="#（2）：数组赋值" class="headerlink" title="（2）：数组赋值"></a>（2）：数组赋值</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr=[2,3,4];</span><br><span class="line">let [a,b,c]=arr;</span><br></pre></td></tr></table></figure></div>
+<h3 id="（3）：从后台请求的数据中获取部分数据信息"><a href="#（3）：从后台请求的数据中获取部分数据信息" class="headerlink" title="（3）：从后台请求的数据中获取部分数据信息"></a>（3）：从后台请求的数据中获取部分数据信息</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&apos;xxx&apos;)=&gt;&#123;</span><br><span class="line">   code:xx;</span><br><span class="line">   data:xxx;</span><br><span class="line">   msg:xxxxx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let &#123;code,data&#125;=$.ajax(&apos;xxx&apos;);</span><br></pre></td></tr></table></figure></div>
+<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><h4 id="（1）两边的结构必须是一样的"><a href="#（1）两边的结构必须是一样的" class="headerlink" title="（1）两边的结构必须是一样的"></a>（1）两边的结构必须是一样的</h4><h4 id="（2）右边必须是一个合法的东西（json、数组）"><a href="#（2）右边必须是一个合法的东西（json、数组）" class="headerlink" title="（2）右边必须是一个合法的东西（json、数组）"></a>（2）右边必须是一个合法的东西（json、数组）</h4><p>例如：错误写法：<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let &#123;a,b&#125; = &#123;3,6&#125;;   //两边结构不一样，右边既不是json也不是数组</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="（3）赋值和解构必须同时完成，必须是一句话。"><a href="#（3）赋值和解构必须同时完成，必须是一句话。" class="headerlink" title="（3）赋值和解构必须同时完成，必须是一句话。"></a>（3）赋值和解构必须同时完成，必须是一句话。</h4><p>例如：错误写法：<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let &#123;a,b&#125;;&#123;a,b&#125;=&#123;a:3,b:6&#125;;</span><br></pre></td></tr></table></figure></div></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/16/ES6基础语法（二）函数/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            ES6基础语法（二）函数
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/16/first-bolg/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">first bolg</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（二）函数/">ES6基础语法（二）函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（一）-变量/">ES6基础语法（一） 变量</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/first-bolg/">first bolg</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/15/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
