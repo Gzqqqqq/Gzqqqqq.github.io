@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6基础语法（三）babel编译 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="前言什么是babel编译，为什么要怎么做？？babel编辑器：将ES6代码编译成低版本浏览器可以用的语句，使得代码兼容各大浏览器。 1、在线编译，引入js文件，在客户端完成便宜过程步骤：1）引入browser.js文件2）type=”text/babel”两个问题：1)降低代码性能（延迟、卡）；2)低版本浏览器本身就不认babel.js。2、离线编译，编译js文件。1）安装node2）npm in">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6基础语法（三）babel编译">
+<meta property="og:url" content="http://yoursite.com/2019/03/16/ES6基础语法（三）babel编译/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="前言什么是babel编译，为什么要怎么做？？babel编辑器：将ES6代码编译成低版本浏览器可以用的语句，使得代码兼容各大浏览器。 1、在线编译，引入js文件，在客户端完成便宜过程步骤：1）引入browser.js文件2）type=”text/babel”两个问题：1)降低代码性能（延迟、卡）；2)低版本浏览器本身就不认babel.js。2、离线编译，编译js文件。1）安装node2）npm in">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-16T14:21:55.067Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6基础语法（三）babel编译">
+<meta name="twitter:description" content="前言什么是babel编译，为什么要怎么做？？babel编辑器：将ES6代码编译成低版本浏览器可以用的语句，使得代码兼容各大浏览器。 1、在线编译，引入js文件，在客户端完成便宜过程步骤：1）引入browser.js文件2）type=”text/babel”两个问题：1)降低代码性能（延迟、卡）；2)低版本浏览器本身就不认babel.js。2、离线编译，编译js文件。1）安装node2）npm in">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-ES6基础语法（三）babel编译" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6基础语法（三）babel编译
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/16/ES6基础语法（三）babel编译/" class="article-date">
+  <time datetime="2019-03-16T14:16:41.000Z" itemprop="datePublished">2019-03-16</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>什么是babel编译，为什么要怎么做？？<br>babel编辑器：将ES6代码编译成低版本浏览器可以用的语句，使得代码兼容各大浏览器。</p>
+<h2 id="1、在线编译，引入js文件，在客户端完成便宜过程"><a href="#1、在线编译，引入js文件，在客户端完成便宜过程" class="headerlink" title="1、在线编译，引入js文件，在客户端完成便宜过程"></a>1、在线编译，引入js文件，在客户端完成便宜过程</h2><h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><h3 id="1）引入browser-js文件"><a href="#1）引入browser-js文件" class="headerlink" title="1）引入browser.js文件"></a>1）引入browser.js文件</h3><h3 id="2）type-”text-babel”"><a href="#2）type-”text-babel”" class="headerlink" title="2）type=”text/babel”"></a>2）type=”text/babel”</h3><h3 id="两个问题："><a href="#两个问题：" class="headerlink" title="两个问题："></a>两个问题：</h3><h3 id="1-降低代码性能（延迟、卡）；"><a href="#1-降低代码性能（延迟、卡）；" class="headerlink" title="1)降低代码性能（延迟、卡）；"></a>1)降低代码性能（延迟、卡）；</h3><h3 id="2-低版本浏览器本身就不认babel-js。"><a href="#2-低版本浏览器本身就不认babel-js。" class="headerlink" title="2)低版本浏览器本身就不认babel.js。"></a>2)低版本浏览器本身就不认babel.js。</h3><h2 id="2、离线编译，编译js文件。"><a href="#2、离线编译，编译js文件。" class="headerlink" title="2、离线编译，编译js文件。"></a>2、离线编译，编译js文件。</h2><h3 id="1）安装node"><a href="#1）安装node" class="headerlink" title="1）安装node"></a>1）安装node</h3><h3 id="2）npm-init-y-创建自己的packge-json文件"><a href="#2）npm-init-y-创建自己的packge-json文件" class="headerlink" title="2）npm init -y:创建自己的packge.json文件"></a>2）npm init -y:创建自己的packge.json文件</h3><h3 id="3）安装babel："><a href="#3）安装babel：" class="headerlink" title="3）安装babel："></a>3）安装babel：</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i @babel/core @babel/cli @babel/preset-env</span><br><span class="line">npm i @babel/polyfill(补充)</span><br></pre></td></tr></table></figure></div>
+<h4 id="注解："><a href="#注解：" class="headerlink" title="注解："></a>注解：</h4><h5 id="babel-core-babel的核心库；"><a href="#babel-core-babel的核心库；" class="headerlink" title="@babel/core:babel的核心库；"></a>@babel/core:babel的核心库；</h5><h5 id="babel-cli：babel的命令行接口，提供必要的命令，没有不能执行babel；"><a href="#babel-cli：babel的命令行接口，提供必要的命令，没有不能执行babel；" class="headerlink" title="@babel/cli：babel的命令行接口，提供必要的命令，没有不能执行babel；"></a>@babel/cli：babel的命令行接口，提供必要的命令，没有不能执行babel；</h5><h5 id="babel-preset-env-D-预先设置好的一些配置（50-原则，用户量不超过50-，则忽略）"><a href="#babel-preset-env-D-预先设置好的一些配置（50-原则，用户量不超过50-，则忽略）" class="headerlink" title="@babel/preset-env -D :预先设置好的一些配置（50%原则，用户量不超过50%，则忽略）"></a>@babel/preset-env -D :预先设置好的一些配置（50%原则，用户量不超过50%，则忽略）</h5><h3 id="4）添加脚本：”build-src-d-dest”"><a href="#4）添加脚本：”build-src-d-dest”" class="headerlink" title="4）添加脚本：”build src -d dest”"></a>4）添加脚本：”build src -d dest”</h3><h3 id="5）添加配置文件："><a href="#5）添加配置文件：" class="headerlink" title="5）添加配置文件："></a>5）添加配置文件：</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   &quot;presets&quot;:[</span><br><span class="line">      &quot;@babel/preset-env&quot;，</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="6）npm-run-build-（运行生成低版本浏览器兼容的js文件）"><a href="#6）npm-run-build-（运行生成低版本浏览器兼容的js文件）" class="headerlink" title="6）npm run build （运行生成低版本浏览器兼容的js文件）"></a>6）npm run build （运行生成低版本浏览器兼容的js文件）</h3>
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/16/ES6基础语法（四）-异步操作-ajax/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            ES6基础语法（四） 异步操作--ajax
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/16/ES6基础语法（二）函数/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">ES6基础语法（二）函数</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（四）-异步操作-ajax/">ES6基础语法（四） 异步操作--ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（三）babel编译/">ES6基础语法（三）babel编译</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（二）函数/">ES6基础语法（二）函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（一）-变量/">ES6基础语法（一） 变量</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/first-bolg/">first bolg</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

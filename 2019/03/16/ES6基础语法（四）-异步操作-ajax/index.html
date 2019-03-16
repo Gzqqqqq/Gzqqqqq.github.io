@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6基础语法（四） 异步操作--ajax | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="ajax的一般写法：1ajax(&amp;apos;http://aaaa/com/1.txt&amp;apos;,function()&amp;#123;&amp;#125;,function()&amp;#123;&amp;#125;); （1）异步操作：同时进行多个操作，用户体验好，但代码混乱（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰异步Demo：代码凌乱12345678910111213ajax(url1,">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6基础语法（四） 异步操作--ajax">
+<meta property="og:url" content="http://yoursite.com/2019/03/16/ES6基础语法（四）-异步操作-ajax/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="ajax的一般写法：1ajax(&amp;apos;http://aaaa/com/1.txt&amp;apos;,function()&amp;#123;&amp;#125;,function()&amp;#123;&amp;#125;); （1）异步操作：同时进行多个操作，用户体验好，但代码混乱（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰异步Demo：代码凌乱12345678910111213ajax(url1,">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-16T14:36:30.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6基础语法（四） 异步操作--ajax">
+<meta name="twitter:description" content="ajax的一般写法：1ajax(&amp;apos;http://aaaa/com/1.txt&amp;apos;,function()&amp;#123;&amp;#125;,function()&amp;#123;&amp;#125;); （1）异步操作：同时进行多个操作，用户体验好，但代码混乱（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰异步Demo：代码凌乱12345678910111213ajax(url1,">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-ES6基础语法（四）-异步操作-ajax" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6基础语法（四） 异步操作--ajax
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/16/ES6基础语法（四）-异步操作-ajax/" class="article-date">
+  <time datetime="2019-03-16T14:17:15.000Z" itemprop="datePublished">2019-03-16</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h2 id="ajax的一般写法："><a href="#ajax的一般写法：" class="headerlink" title="ajax的一般写法："></a>ajax的一般写法：</h2><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ajax(&apos;http://aaaa/com/1.txt&apos;,function()&#123;&#125;,function()&#123;&#125;);</span><br></pre></td></tr></table></figure></div>
+<h2 id="（1）异步操作：同时进行多个操作，用户体验好，但代码混乱"><a href="#（1）异步操作：同时进行多个操作，用户体验好，但代码混乱" class="headerlink" title="（1）异步操作：同时进行多个操作，用户体验好，但代码混乱"></a>（1）异步操作：同时进行多个操作，用户体验好，但代码混乱</h2><h2 id="（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰"><a href="#（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰" class="headerlink" title="（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰"></a>（2）同步操作：一次只能进行一个操作，用户体验不好，一直等待，但代码清晰</h2><h3 id="异步Demo：代码凌乱"><a href="#异步Demo：代码凌乱" class="headerlink" title="异步Demo：代码凌乱"></a>异步Demo：代码凌乱</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ajax(url1,function(data1)&#123;</span><br><span class="line">   ajax(url2,function(data2)&#123;</span><br><span class="line">      ajax(url3,function(data3)&#123;</span><br><span class="line">      </span><br><span class="line">      &#125;,function()&#123;</span><br><span class="line">         alert(&apos;error&apos;);</span><br><span class="line">      &#125;);</span><br><span class="line">   &#125;,function()&#123;</span><br><span class="line">      alert(&apos;error&apos;);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;,function()&#123;</span><br><span class="line">   alert(&apos;error&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<h3 id="同步Demo：代码简洁"><a href="#同步Demo：代码简洁" class="headerlink" title="同步Demo：代码简洁"></a>同步Demo：代码简洁</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let data1 = ajax(&#123;url1,function()&#123;&#125;,function()&#123;&#125;&#125;);</span><br><span class="line">let data2 = ajax(&#123;url2,function()&#123;&#125;,function()&#123;&#125;&#125;);</span><br><span class="line">let data3 = ajax(&#123;url3,function()&#123;&#125;,function()&#123;&#125;&#125;);</span><br></pre></td></tr></table></figure></div>
+<h2 id="（3）融合异步同步的优势"><a href="#（3）融合异步同步的优势" class="headerlink" title="（3）融合异步同步的优势"></a>（3）融合异步同步的优势</h2><h3 id="1、Promise—对异步操作做统一的封装"><a href="#1、Promise—对异步操作做统一的封装" class="headerlink" title="1、Promise—对异步操作做统一的封装"></a>1、Promise—对异步操作做统一的封装</h3><p>异步代码放在function内部<br>resolve–解决后调用的方法<br>reject—拒接后调用的方法<br>上述两个方法都是通过Promise对象自己写的then方法封装好了。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">let p = new Promise(function(resolve,reject)&#123;</span><br><span class="line">	$.ajax(&#123;</span><br><span class="line">		url:&quot;http://localhost:8080/123&quot;,</span><br><span class="line">			success()&#123;</span><br><span class="line">			resolve(arr);</span><br><span class="line">		&#125;,</span><br><span class="line">		error()&#123;</span><br><span class="line">			reject(err);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">			</span><br><span class="line">p.then(function(arr)&#123;</span><br><span class="line">	alert(&apos;success&apos;);</span><br><span class="line">	console.log(arr);</span><br><span class="line">&#125;,function(res)&#123;</span><br><span class="line">	alert(&apos;failer&apos;);</span><br><span class="line">	console.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>jquery的ajax请求已经自己封装好了<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">	url:&apos;http://localhost:8080/123&apos;,</span><br><span class="line">	type:&apos;get&apos;,</span><br><span class="line">&#125;).then(arr=&gt;&#123;</span><br><span class="line">	alert(&apos;success&apos;);</span><br><span class="line">	console.log(arr);</span><br><span class="line">&#125;,res=&gt;&#123;</span><br><span class="line">	alert(&apos;failer&apos;);</span><br><span class="line">	console.log(res);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="2、Promise-all-所有数据都读取完成以后会给你一个统一的结果-用于读取大量的数据"><a href="#2、Promise-all-所有数据都读取完成以后会给你一个统一的结果-用于读取大量的数据" class="headerlink" title="2、Promise.all() :所有数据都读取完成以后会给你一个统一的结果(用于读取大量的数据)"></a>2、Promise.all() :所有数据都读取完成以后会给你一个统一的结果(用于读取大量的数据)</h3><h4 id="Promise的all-方法-全部成功才算成功"><a href="#Promise的all-方法-全部成功才算成功" class="headerlink" title="Promise的all()方法  全部成功才算成功"></a>Promise的all()方法  全部成功才算成功</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Promise.all([</span><br><span class="line">	$.ajax(&#123;url:&apos;http://localhost:8080/123&apos;,dataType:&apos;json&apos;&#125;),</span><br><span class="line">	$.ajax(&#123;url:&apos;http://localhost:8080/456&apos;,dataType:&apos;json&apos;&#125;),</span><br><span class="line">]).then(arr =&gt; &#123; </span><br><span class="line">	let [data1,data2]=arr;</span><br><span class="line">	console.log(data2);</span><br><span class="line">&#125;, res =&gt; &#123;</span><br><span class="line">	alert(&apos;失败&apos;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>返回的是一个数组</p>
+<h3 id="3、Promise-race-竞速（或，一起读，谁快用谁）"><a href="#3、Promise-race-竞速（或，一起读，谁快用谁）" class="headerlink" title="3、Promise.race 竞速（或，一起读，谁快用谁）"></a>3、Promise.race 竞速（或，一起读，谁快用谁）</h3><h3 id="4、通过async-await整合同步异步（是一个语法）"><a href="#4、通过async-await整合同步异步（是一个语法）" class="headerlink" title="4、通过async/await整合同步异步（是一个语法）"></a>4、通过async/await整合同步异步（是一个语法）</h3><h3 id="普通函数—-一直执行，直到结束"><a href="#普通函数—-一直执行，直到结束" class="headerlink" title="普通函数—-一直执行，直到结束"></a>普通函数—-一直执行，直到结束</h3><h3 id="async函数—-能够”暂停”"><a href="#async函数—-能够”暂停”" class="headerlink" title="async函数—-能够”暂停”"></a>async函数—-能够”暂停”</h3><h4 id="异步函数的Demo"><a href="#异步函数的Demo" class="headerlink" title="异步函数的Demo"></a>异步函数的Demo</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">async function show()&#123;</span><br><span class="line"> xxx;</span><br><span class="line"> xxx;</span><br><span class="line"> let data = await $.ajax();</span><br><span class="line"> xxx;</span><br><span class="line">&#125;</span><br><span class="line">show();</span><br></pre></td></tr></table></figure></div>
+<p>同步的写法，异步的核心</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/16/ES6基础语法（三）babel编译/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">ES6基础语法（三）babel编译</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（四）-异步操作-ajax/">ES6基础语法（四） 异步操作--ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（三）babel编译/">ES6基础语法（三）babel编译</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（二）函数/">ES6基础语法（二）函数</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（一）-变量/">ES6基础语法（一） 变量</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/first-bolg/">first bolg</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
