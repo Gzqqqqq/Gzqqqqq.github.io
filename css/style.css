@@ -251,6 +251,7 @@ html, body, #fullpage{
   display: block;
   text-align: center;
   margin: 10px;
+  color: white;
 }
 .mobile-nav-img {
   width: 100%;
@@ -698,7 +699,27 @@ html, body, #fullpage{
 #footer {
   box-shadow: 0 -1px 6px rgba(0, 0, 0, .3);
   padding: 4px;
+  color: white;
+  font-weight: 100;
 }
+#footer  a{
+  color: wheat;
+  font-weight: 100;
+}
+
+#footer a:hover{
+	color: pink;
+}
+
+.nav-item{
+	color: white !important;
+  font-weight: 200;
+}
+
+.nav-item:hover{
+	color: pink !important;
+}
+
 @media screen and (max-width: 1200px){
   .global-width {
     width: 100%;
