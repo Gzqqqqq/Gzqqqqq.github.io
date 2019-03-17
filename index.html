@@ -51,6 +51,51 @@
       <div id="middlecontent" title class="global-width sidebar-right">
         <section id="main">
   
+    <article id="post-node-js自定义模块" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/17/node-js自定义模块/">node.js自定义模块</a>
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/17/node-js自定义模块/" class="article-date">
+  <time datetime="2019-03-17T12:32:25.000Z" itemprop="datePublished">2019-03-17</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+
+  </div>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>node.js拥有许多的系统模块如（http、fs）,但是同样我们可以自定义模块。<br>自定义模块需要export其中想要暴露的数据变量，使用模块的js文件需要用require引入模块js<br>nodejs中没有全局变量，模块中的数据都是通过exports导出的。</p>
+<h4 id="输出（exports）"><a href="#输出（exports）" class="headerlink" title="输出（exports）"></a>输出（exports）</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.a = 12;</span><br><span class="line">exports.b = 23;</span><br><span class="line">exports.c = 45;</span><br></pre></td></tr></table></figure></div>
+<h4 id="批量输出（module）"><a href="#批量输出（module）" class="headerlink" title="批量输出（module）"></a>批量输出（module）</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module.exports=&#123;a:12,b:23,c:45&#125;;</span><br></pre></td></tr></table></figure></div>
+<h4 id="引入模块-require-："><a href="#引入模块-require-：" class="headerlink" title="引入模块(require)："></a>引入模块(require)：</h4><p>引入系统模块不需要加‘./’，而引入自定义模块时，即使在当前目录，依然不能省略‘./’，如果不加则代表从系统模块中寻找对应姓名的模块。<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const modl = reqiure(&apos;./modl&apos;);</span><br><span class="line">alert(modl.a,modl.b,modl.c);</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="nodejs的模块化与ES6模块系统的差别"><a href="#nodejs的模块化与ES6模块系统的差别" class="headerlink" title="nodejs的模块化与ES6模块系统的差别"></a>nodejs的模块化与ES6模块系统的差别</h3><p>（1）nodejs通过exports导出数据，ES6模块系统使用export导出数据<br>（2）nodejs通过require引入模块，ES6模块系统使用import引入模块<br>（3）nodejs直接运行，ES6模块系统需要配置webpack.config.js文件然后运行webpack打包之后方能运行</p>
+<h4 id="注解：模块化就是定义好的一个js文件，nodejs可以直接运行模块代码，但是在javascript中没有支持ES6模块系统的语法，所以需要通过webpack打包之后生成javascript可以识别的js代码才可以运行"><a href="#注解：模块化就是定义好的一个js文件，nodejs可以直接运行模块代码，但是在javascript中没有支持ES6模块系统的语法，所以需要通过webpack打包之后生成javascript可以识别的js代码才可以运行" class="headerlink" title="注解：模块化就是定义好的一个js文件，nodejs可以直接运行模块代码，但是在javascript中没有支持ES6模块系统的语法，所以需要通过webpack打包之后生成javascript可以识别的js代码才可以运行"></a>注解：模块化就是定义好的一个js文件，nodejs可以直接运行模块代码，但是在javascript中没有支持ES6模块系统的语法，所以需要通过webpack打包之后生成javascript可以识别的js代码才可以运行</h4><h3 id="什么是webpack？"><a href="#什么是webpack？" class="headerlink" title="什么是webpack？"></a>什么是webpack？</h3><p> 是一个打包工具，当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</p>
+<h3 id="为什么需要打包？"><a href="#为什么需要打包？" class="headerlink" title="为什么需要打包？"></a>为什么需要打包？</h3><p>（1）模块化<br>（2）优化加载速度<br>（3）使用新的开发模式</p>
+<h3 id="webpack有什么优点？"><a href="#webpack有什么优点？" class="headerlink" title="webpack有什么优点？"></a>webpack有什么优点？</h3><p>（1）同时支持ConmmonJs与AMD<br>（2）一切都可以打包<br>（3）分模块打包</p>
+
+      
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+  
     <article id="post-ES7、8、9预览" class="article global-container article-type-post" itemscope itemprop="blogPost">
   
     <header class="article-header">
@@ -125,7 +170,7 @@
 <h1 id="二、ES6模块系统"><a href="#二、ES6模块系统" class="headerlink" title="二、ES6模块系统"></a>二、ES6模块系统</h1><h2 id="JS模块系统化简史"><a href="#JS模块系统化简史" class="headerlink" title="JS模块系统化简史"></a>JS模块系统化简史</h2><p>没有模块 -&gt; CMD（Common Module Defintion）是同步的，必须加载完所有的模块才能开始工作 -&gt; AMD(Asynchronous Module Defintion)是异步的 -&gt; 语言提供模块支持</p>
 <h2 id="使用ES6模块"><a href="#使用ES6模块" class="headerlink" title="使用ES6模块"></a>使用ES6模块</h2><h3 id="1、定义模块"><a href="#1、定义模块" class="headerlink" title="1、定义模块"></a>1、定义模块</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export let a = 12;</span><br><span class="line">export let b = 34;</span><br><span class="line">export let c= 44;</span><br></pre></td></tr></table></figure></div>
 <h3 id="2、使用使用"><a href="#2、使用使用" class="headerlink" title="2、使用使用"></a>2、使用使用</h3><p>（1）在模块里面需要导出(export)<br>（2）在使用模块的地方需要导入(import)<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as modl from &apos;./modl&apos;;</span><br></pre></td></tr></table></figure></div></p>
-<p>（3）需要webpack对使用模块的js文件进行编译,配置webpack.config.js文件<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const pathlib = reqiure(&apos;path&apos;);     //获取当前的绝对路径</span><br><span class="line">model.export = &#123;</span><br><span class="line">   model:&quot;production&quot;,</span><br><span class="line">   entry:&quot;./js/indx.js&quot;,             //需要编译的文件的入口</span><br><span class="line">   output&quot;&#123;                          //编译完成之后的文件名，以及存放的位置</span><br><span class="line">      path:pathlib.resolve(__dirname,&quot;build&quot;);</span><br><span class="line">      filename:&quot;bundle.js&quot;;   </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>（3）需要webpack对使用模块的js文件进行编译,配置webpack.config.js文件<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const pathlib = reqiure(&apos;path&apos;);     //获取当前的绝对路径</span><br><span class="line">module.exports = &#123;</span><br><span class="line">   model:&quot;production&quot;,</span><br><span class="line">   entry:&quot;./js/indx.js&quot;,             //需要编译的文件的入口</span><br><span class="line">   output&quot;&#123;                          //编译完成之后的文件名，以及存放的位置</span><br><span class="line">      path:pathlib.resolve(__dirname,&quot;build&quot;);</span><br><span class="line">      filename:&quot;bundle.js&quot;;   </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
 <p>（4）在html中引入编译之后的js文件。</p>
 <h2 id="详解模块语法"><a href="#详解模块语法" class="headerlink" title="详解模块语法"></a>详解模块语法</h2><h3 id="1、导出-export"><a href="#1、导出-export" class="headerlink" title="1、导出(export)"></a>1、导出(export)</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//导出变量</span><br><span class="line">export let a = 12;</span><br><span class="line">export const a = 12;</span><br><span class="line"></span><br><span class="line">//批量导出变量</span><br><span class="line">export &#123;a,b,c,....&#125;</span><br><span class="line"></span><br><span class="line">//导出函数</span><br><span class="line">export function show()&#123;&#125;</span><br><span class="line"></span><br><span class="line">//导出class</span><br><span class="line">export class Person()&#123;&#125;</span><br><span class="line"></span><br><span class="line">//导出默认成员</span><br><span class="line">export default 99;</span><br></pre></td></tr></table></figure></div>
 <h3 id="2、导入-import"><a href="#2、导入-import" class="headerlink" title="2、导入(import)"></a>2、导入(import)</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import * as name from &apos;xxx&apos;;  //引入所有的成员</span><br><span class="line">import name from &apos;xxx&apos;;       //引入默认的成员</span><br><span class="line">import &#123;a,b as name&#125; from &apos;xxx&apos;; //引入部分</span><br><span class="line">import &apos;xxx&apos;;                 //只引入不使用成员（如css）</span><br><span class="line">let p = import(&apos;xxx&apos;);        //异步引入</span><br></pre></td></tr></table></figure></div>
@@ -460,7 +505,7 @@
   <div class="widget-box">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
     </div>
   </div>
 
@@ -470,7 +515,7 @@
   <div class="widget-box">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
     </div>
   </div>
 
@@ -491,6 +536,10 @@
       <ul>
         
           <li>
+            <a href="/2019/03/17/node-js自定义模块/">node.js自定义模块</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/17/ES7、8、9预览/">ES7、8、9预览</a>
           </li>
         
@@ -504,10 +553,6 @@
         
           <li>
             <a href="/2019/03/16/ES6之--babel编译/">ES6之--babel编译</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/16/ES6基础语法（二）函数/">ES6基础语法（二）函数</a>
           </li>
         
       </ul>
