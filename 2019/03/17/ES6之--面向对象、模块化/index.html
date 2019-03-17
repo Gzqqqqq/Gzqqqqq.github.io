@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6之--面向对象、模块化 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="一、面向对象（封装）语言的发展史机器语言 -&amp;gt; 汇编语言 -&amp;gt; 低级语言（面向过程） -&amp;gt; 高级语言（面向对象） -&amp;gt; 模块系统 -&amp;gt; 框架 -&amp;gt; 系统接口（API） ES5面向对象（伪面向对象）：没有一个统一的写法Demo：既是类，也是类的构造方法添加方法多样化、不统一1234567891011121314151617181920212223function">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6之--面向对象、模块化">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/ES6之--面向对象、模块化/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="一、面向对象（封装）语言的发展史机器语言 -&amp;gt; 汇编语言 -&amp;gt; 低级语言（面向过程） -&amp;gt; 高级语言（面向对象） -&amp;gt; 模块系统 -&amp;gt; 框架 -&amp;gt; 系统接口（API） ES5面向对象（伪面向对象）：没有一个统一的写法Demo：既是类，也是类的构造方法添加方法多样化、不统一1234567891011121314151617181920212223function">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-17T07:34:34.591Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6之--面向对象、模块化">
+<meta name="twitter:description" content="一、面向对象（封装）语言的发展史机器语言 -&amp;gt; 汇编语言 -&amp;gt; 低级语言（面向过程） -&amp;gt; 高级语言（面向对象） -&amp;gt; 模块系统 -&amp;gt; 框架 -&amp;gt; 系统接口（API） ES5面向对象（伪面向对象）：没有一个统一的写法Demo：既是类，也是类的构造方法添加方法多样化、不统一1234567891011121314151617181920212223function">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-ES6之--面向对象、模块化" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6之--面向对象、模块化
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/17/ES6之--面向对象、模块化/" class="article-date">
+  <time datetime="2019-03-17T07:17:19.000Z" itemprop="datePublished">2019-03-17</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="一、面向对象（封装）"><a href="#一、面向对象（封装）" class="headerlink" title="一、面向对象（封装）"></a>一、面向对象（封装）</h1><h2 id="语言的发展史"><a href="#语言的发展史" class="headerlink" title="语言的发展史"></a>语言的发展史</h2><p>机器语言 -&gt; 汇编语言 -&gt; 低级语言（面向过程） -&gt; 高级语言（面向对象） -&gt; 模块系统 -&gt; 框架 -&gt; 系统接口（API）</p>
+<h2 id="ES5面向对象（伪面向对象）："><a href="#ES5面向对象（伪面向对象）：" class="headerlink" title="ES5面向对象（伪面向对象）："></a>ES5面向对象（伪面向对象）：</h2><h3 id="没有一个统一的写法"><a href="#没有一个统一的写法" class="headerlink" title="没有一个统一的写法"></a>没有一个统一的写法</h3><h4 id="Demo："><a href="#Demo：" class="headerlink" title="Demo："></a>Demo：</h4><p>既是类，也是类的构造方法<br>添加方法多样化、不统一<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">   this.name = name;</span><br><span class="line">   this.age = age;</span><br><span class="line">   </span><br><span class="line">   //添加方法，方法一:</span><br><span class="line">   this.showName=function()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">   &#125;</span><br><span class="line">   this.showAge()&#123;</span><br><span class="line">      alert(this.age);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//添加方法，方法二</span><br><span class="line">Person.prototype.showAge=function()&#123;</span><br><span class="line">   alert(this.age);</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.showName=function()&#123;</span><br><span class="line">   alert(this.name);</span><br><span class="line">&#125;</span><br><span class="line">//实例化对象：</span><br><span class="line">let person = Person(&apos;gzq&apos;,19);</span><br><span class="line">person.showName();</span><br><span class="line">person.showAge();</span><br></pre></td></tr></table></figure></div></p>
+<h2 id="ES6面向对象："><a href="#ES6面向对象：" class="headerlink" title="ES6面向对象："></a>ES6面向对象：</h2><h3 id="有单独类的声明和构造函数的声明"><a href="#有单独类的声明和构造函数的声明" class="headerlink" title="有单独类的声明和构造函数的声明"></a>有单独类的声明和构造函数的声明</h3><h4 id="专门声明类的关键字–class"><a href="#专门声明类的关键字–class" class="headerlink" title="专门声明类的关键字–class"></a>专门声明类的关键字–class</h4><h4 id="专门声明构造函数的关键字–constructor"><a href="#专门声明构造函数的关键字–constructor" class="headerlink" title="专门声明构造函数的关键字–constructor"></a>专门声明构造函数的关键字–constructor</h4><h4 id="Demo：-1"><a href="#Demo：-1" class="headerlink" title="Demo："></a>Demo：</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Person&#123;</span><br><span class="line">   constructor(name,age)&#123;</span><br><span class="line">      this.name = name;</span><br><span class="line">      this.age = age;</span><br><span class="line">   &#125;</span><br><span class="line">   showName()&#123;</span><br><span class="line">      alert(this.name);</span><br><span class="line">   &#125;</span><br><span class="line">   showAge()&#123;</span><br><span class="line">      alert(this.age);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">//实例化对象：</span><br><span class="line">let person = Person(&apos;gzq&apos;,19);</span><br><span class="line">person.showName();</span><br><span class="line">person.showAge();</span><br></pre></td></tr></table></figure></div>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="1、省事"><a href="#1、省事" class="headerlink" title="1、省事"></a>1、省事</h3><h3 id="2、便于扩展，父类修改，子类也会修改"><a href="#2、便于扩展，父类修改，子类也会修改" class="headerlink" title="2、便于扩展，父类修改，子类也会修改"></a>2、便于扩展，父类修改，子类也会修改</h3><h3 id="ES5继承Demo-Worker继承Person-："><a href="#ES5继承Demo-Worker继承Person-：" class="headerlink" title="ES5继承Demo(Worker继承Person)："></a>ES5继承Demo(Worker继承Person)：</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Worker(name,age,job)&#123;</span><br><span class="line">   Person.call(this,name,age);</span><br><span class="line">   this.job = job;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Worker.prototype=new Person();</span><br><span class="line">Worker.prototype.showJob=function()&#123;</span><br><span class="line">   alert(this.job);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let worker = Worker(&apos;gzq&apos;,19,&apos;student&apos;);</span><br><span class="line">worker.showName();</span><br><span class="line">worker.showAge();</span><br><span class="line">worker.showJob();</span><br></pre></td></tr></table></figure></div>
+<h3 id="ES6用extends关键字表示继承，super-是超类或者父类"><a href="#ES6用extends关键字表示继承，super-是超类或者父类" class="headerlink" title="ES6用extends关键字表示继承，super()是超类或者父类"></a>ES6用extends关键字表示继承，super()是超类或者父类</h3><h3 id="ES6继承Demo-Worker继承Person-："><a href="#ES6继承Demo-Worker继承Person-：" class="headerlink" title="ES6继承Demo(Worker继承Person)："></a>ES6继承Demo(Worker继承Person)：</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Worker extends Person&#123;</span><br><span class="line">   constructor()&#123;</span><br><span class="line">      super(name,age);</span><br><span class="line">      this.job = job;</span><br><span class="line">   &#125;</span><br><span class="line">   showJob()&#123;</span><br><span class="line">     alertJob(this,job);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">let worker = Worker(&apos;gzq&apos;,19,&apos;student&apos;);</span><br><span class="line">worker.showName();</span><br><span class="line">worker.showAge();</span><br><span class="line">worker.showJob();</span><br></pre></td></tr></table></figure></div>
+<h1 id="二、ES6模块系统"><a href="#二、ES6模块系统" class="headerlink" title="二、ES6模块系统"></a>二、ES6模块系统</h1><h2 id="JS模块系统化简史"><a href="#JS模块系统化简史" class="headerlink" title="JS模块系统化简史"></a>JS模块系统化简史</h2><p>没有模块 -&gt; CMD（Common Module Defintion）是同步的，必须加载完所有的模块才能开始工作 -&gt; AMD(Asynchronous Module Defintion)是异步的 -&gt; 语言提供模块支持</p>
+<h2 id="使用ES6模块"><a href="#使用ES6模块" class="headerlink" title="使用ES6模块"></a>使用ES6模块</h2><h3 id="1、定义模块"><a href="#1、定义模块" class="headerlink" title="1、定义模块"></a>1、定义模块</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export let a = 12;</span><br><span class="line">export let b = 34;</span><br><span class="line">export let c= 44;</span><br></pre></td></tr></table></figure></div>
+<h3 id="2、使用使用"><a href="#2、使用使用" class="headerlink" title="2、使用使用"></a>2、使用使用</h3><p>（1）在模块里面需要导出(export)<br>（2）在使用模块的地方需要导入(import)<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import * as modl from &apos;./modl&apos;;</span><br></pre></td></tr></table></figure></div></p>
+<p>（3）需要webpack对使用模块的js文件进行编译,配置webpack.config.js文件<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const pathlib = reqiure(&apos;path&apos;);     //获取当前的绝对路径</span><br><span class="line">model.export = &#123;</span><br><span class="line">   model:&quot;production&quot;,</span><br><span class="line">   entry:&quot;./js/indx.js&quot;,             //需要编译的文件的入口</span><br><span class="line">   output&quot;&#123;                          //编译完成之后的文件名，以及存放的位置</span><br><span class="line">      path:pathlib.resolve(__dirname,&quot;build&quot;);</span><br><span class="line">      filename:&quot;bundle.js&quot;;   </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p>（4）在html中引入编译之后的js文件。</p>
+<h2 id="详解模块语法"><a href="#详解模块语法" class="headerlink" title="详解模块语法"></a>详解模块语法</h2><h3 id="1、导出-export"><a href="#1、导出-export" class="headerlink" title="1、导出(export)"></a>1、导出(export)</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//导出变量</span><br><span class="line">export let a = 12;</span><br><span class="line">export const a = 12;</span><br><span class="line"></span><br><span class="line">//批量导出变量</span><br><span class="line">export &#123;a,b,c,....&#125;</span><br><span class="line"></span><br><span class="line">//导出函数</span><br><span class="line">export function show()&#123;&#125;</span><br><span class="line"></span><br><span class="line">//导出class</span><br><span class="line">export class Person()&#123;&#125;</span><br><span class="line"></span><br><span class="line">//导出默认成员</span><br><span class="line">export default 99;</span><br></pre></td></tr></table></figure></div>
+<h3 id="2、导入-import"><a href="#2、导入-import" class="headerlink" title="2、导入(import)"></a>2、导入(import)</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import * as name from &apos;xxx&apos;;  //引入所有的成员</span><br><span class="line">import name from &apos;xxx&apos;;       //引入默认的成员</span><br><span class="line">import &#123;a,b as name&#125; from &apos;xxx&apos;; //引入部分</span><br><span class="line">import &apos;xxx&apos;;                 //只引入不使用成员（如css）</span><br><span class="line">let p = import(&apos;xxx&apos;);        //异步引入</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/17/ES7、8、9预览/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            ES7、8、9预览
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/16/ES6之--异步操作-ajax/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">ES6之--异步操作--ajax</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/17/ES7、8、9预览/">ES7、8、9预览</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/17/ES6之--面向对象、模块化/">ES6之--面向对象、模块化</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6之--异步操作-ajax/">ES6之--异步操作--ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6之--babel编译/">ES6之--babel编译</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/16/ES6基础语法（二）函数/">ES6基础语法（二）函数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
