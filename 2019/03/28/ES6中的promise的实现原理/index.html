@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6中的promise的实现原理 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="实现一个简单的Promise1. promise的构造方法：参数是function，可以是一个参数，也可以是两个参数。 1234567891011function  Promise(fn) &amp;#123;    function resolve(value) &amp;#123;        &amp;#125;    function reject(value) &amp;#123;        &amp;#125;">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6中的promise的实现原理">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/ES6中的promise的实现原理/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="实现一个简单的Promise1. promise的构造方法：参数是function，可以是一个参数，也可以是两个参数。 1234567891011function  Promise(fn) &amp;#123;    function resolve(value) &amp;#123;        &amp;#125;    function reject(value) &amp;#123;        &amp;#125;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-28T08:50:21.130Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6中的promise的实现原理">
+<meta name="twitter:description" content="实现一个简单的Promise1. promise的构造方法：参数是function，可以是一个参数，也可以是两个参数。 1234567891011function  Promise(fn) &amp;#123;    function resolve(value) &amp;#123;        &amp;#125;    function reject(value) &amp;#123;        &amp;#125;">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-ES6中的promise的实现原理" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6中的promise的实现原理
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/28/ES6中的promise的实现原理/" class="article-date">
+  <time datetime="2019-03-28T08:25:42.000Z" itemprop="datePublished">2019-03-28</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h3 id="实现一个简单的Promise"><a href="#实现一个简单的Promise" class="headerlink" title="实现一个简单的Promise"></a>实现一个简单的Promise</h3><h3 id="1-promise的构造方法："><a href="#1-promise的构造方法：" class="headerlink" title="1. promise的构造方法："></a>1. promise的构造方法：</h3><p>参数是function，可以是一个参数，也可以是两个参数。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>  Promise(fn) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> resolve(value) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">function</span> reject(value) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    fn (resolve,reject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-promise中的then方法："><a href="#2-promise中的then方法：" class="headerlink" title="2. promise中的then方法："></a>2. promise中的then方法：</h3><p>promise最重要的一个方法是then，我们需要实现then方法，then方法接受的也是2个function，一个是成功的回调，一个是失败的回调</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Promise(fn) &#123;</span><br><span class="line">    var value = null, succallbacks = [], failcallbacks = [];</span><br><span class="line">    this.then = <span class="keyword">function</span> (fulfilled, rejected) &#123;</span><br><span class="line">        succallbacks.push(fulfilled);</span><br><span class="line">        failcallbacks.push(rejected);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> resolve(value) &#123;</span><br><span class="line">         succallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">             callback(value);</span><br><span class="line">         &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> reject(value) &#123;</span><br><span class="line">        failcallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">            callback(value);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fn(resolve, reject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="3-加入链式调用，以及延时"><a href="#3-加入链式调用，以及延时" class="headerlink" title="3. 加入链式调用，以及延时"></a>3. 加入链式调用，以及延时</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Promise(fn) &#123;</span><br><span class="line">    var  succallbacks = [], failcallbacks = [];</span><br><span class="line">    this.then = <span class="keyword">function</span> (fulfilled, rejected) &#123;</span><br><span class="line">        succallbacks.push(fulfilled);</span><br><span class="line">        failcallbacks.push(rejected);</span><br><span class="line">        <span class="built_in">return</span> this;   //加入链式调用，注意bluebird 或者原生promise中是返回一个新的promise，这样只是为了方便，</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> resolve(value) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>() &#123;   //加入延时</span><br><span class="line">            succallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">                callback(value);</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> reject(value) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            failcallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">                callback(value);</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fn(resolve, reject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="4-加入状态"><a href="#4-加入状态" class="headerlink" title="4. 加入状态"></a>4. 加入状态</h3><p>当调用成功或者失败事件时，改变当前的状态，，then方法根据状态将函数放入成功或失败数组中。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Promise(fn) &#123;</span><br><span class="line">    var data = undefined, reason = undefined;</span><br><span class="line">    var succallbacks = [];</span><br><span class="line">    var failcallbacks = [];</span><br><span class="line">    var status = <span class="string">"pending"</span>; // 加入promise  3种状态</span><br><span class="line">    this.then = <span class="keyword">function</span> (fulfilled, rejected) &#123;</span><br><span class="line">        <span class="keyword">if</span> (status === <span class="string">"pending"</span>) &#123;</span><br><span class="line">            succallbacks.push(fulfilled);</span><br><span class="line">            failcallbacks.push(rejected);</span><br><span class="line">            <span class="built_in">return</span> this;   //加入链式调用，注意bluebird 或者原生promise中是返回一个新的promise，这样只是为了方便，</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status == <span class="string">"fulfilled"</span>) &#123;</span><br><span class="line">            fulfilled(data);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            rejected(reason);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> resolve(value) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span> () &#123;   //加入延时</span><br><span class="line">            status = <span class="string">"fulfilled"</span>;</span><br><span class="line">            data = value;</span><br><span class="line">            succallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">                callback(value);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> reject(value) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            status = <span class="string">"rejected"</span>;</span><br><span class="line">            reason = value;</span><br><span class="line">            failcallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">                callback(value);</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fn(resolve, reject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="5-完整版"><a href="#5-完整版" class="headerlink" title="5. 完整版"></a>5. 完整版</h3><p>修改then方法返回一个新的Promise，能保证 then(f1).then(f2)</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Promise(fn) &#123;</span><br><span class="line">    var data = undefined, reason = undefined;</span><br><span class="line">    var succallbacks = [];</span><br><span class="line">    var failcallbacks = [];</span><br><span class="line">    var status = <span class="string">"pending"</span>;</span><br><span class="line">    this.then = <span class="keyword">function</span> (fulfilled, rejected) &#123;</span><br><span class="line">        <span class="built_in">return</span> new Promise(<span class="keyword">function</span>(resolve,reject) &#123;    //返回一个新的promise</span><br><span class="line">            <span class="keyword">function</span> suc(value) &#123;   //成功</span><br><span class="line">                var ret = typeof fulfilled === <span class="string">'function'</span> &amp;&amp; fulfilled(value) || value;</span><br><span class="line">                <span class="keyword">if</span>( ret &amp;&amp; typeof ret [<span class="string">'then'</span>] == <span class="string">'function'</span>)&#123;    //判断 <span class="keyword">then</span>中的 返回的是否是promise对象，如果是注册<span class="keyword">then</span>方法</span><br><span class="line">                    ret.then(<span class="keyword">function</span>(value)&#123;</span><br><span class="line">                        resolve(value);</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    resolve(ret);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">function</span> errback(reason) &#123;  //失败</span><br><span class="line">                reason = typeof rejected === <span class="string">'function'</span>  &amp;&amp; rejected(reason) || reason;</span><br><span class="line">                reject(reason);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (status === <span class="string">'pending'</span>) &#123;</span><br><span class="line">                succallbacks.push(suc);</span><br><span class="line">                failcallbacks.push(errback);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(status === <span class="string">'fulfilled'</span>)&#123;</span><br><span class="line">                suc(data);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                errback(reason);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> resolve(value) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span> () &#123;   //加入延时</span><br><span class="line">            status = <span class="string">"fulfilled"</span>;</span><br><span class="line">            data = value;</span><br><span class="line">            succallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">                callback(value);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;, 0)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> reject(value) &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">            status = <span class="string">"rejected"</span>;</span><br><span class="line">            reason = value;</span><br><span class="line">            failcallbacks.forEach((callback) =&gt; &#123;</span><br><span class="line">                callback(value);</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;, 0)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    fn(resolve, reject);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/28/ES6中的promise用法/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">ES6中的promise用法</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise的实现原理/">ES6中的promise的实现原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise用法/">ES6中的promise用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/css3的flex弹性布局/">css3的flex弹性布局</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/Vue中MVVM模式实现数据的双向绑定的原理/">Vue中MVVM模式实现数据双向绑定的原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/DOM/">DOM</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

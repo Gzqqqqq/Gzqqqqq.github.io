@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ES6中的promise用法 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。  Promise对象有以下两个特点：（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6中的promise用法">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/ES6中的promise用法/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。  Promise对象有以下两个特点：（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j2.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j3.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j4.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j5.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j6.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j7.png">
+<meta property="og:updated_time" content="2019-03-28T08:24:52.490Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6中的promise用法">
+<meta name="twitter:description" content="Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。  Promise对象有以下两个特点：（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-ES6中的promise用法" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      ES6中的promise用法
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/28/ES6中的promise用法/" class="article-date">
+  <time datetime="2019-03-28T07:42:49.000Z" itemprop="datePublished">2019-03-28</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <p>Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。</p>
+<hr>
+<h3 id="Promise对象有以下两个特点："><a href="#Promise对象有以下两个特点：" class="headerlink" title="Promise对象有以下两个特点："></a>Promise对象有以下两个特点：</h3><p>（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是Promise这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。</p>
+<p>（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从Pending变为Resolved和从Pending变为Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对Promise对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</p>
+<p>有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易。</p>
+<h4 id="简单来说，Promise-就是用同步的方式写异步的代码，用来解决回调问题"><a href="#简单来说，Promise-就是用同步的方式写异步的代码，用来解决回调问题" class="headerlink" title="简单来说，Promise 就是用同步的方式写异步的代码，用来解决回调问题"></a>简单来说，Promise 就是用同步的方式写异步的代码，用来解决回调问题</h4><h3 id="then-方法"><a href="#then-方法" class="headerlink" title="then()方法"></a>then()方法</h3><p>then 方法就是把原来的回调写法分离出来，在异步操作执行完后，用链式调用的方式执行回调函数。<br>而 Promise 的优势就在于这个链式调用。我们可以在 then 方法中继续写 Promise 对象并返回，然后继续调用 then 来进行回调操作。<br>可有两个参数，第一个是成功 resolve 调用的方法，第二个是失败 reject 调用的方法</p>
+<hr>
+<h3 id="resolve-方法"><a href="#resolve-方法" class="headerlink" title="resolve()方法"></a>resolve()方法</h3><h3 id="把-Promise-的状态置为完成态（Resolved），这时-then-方法就能捕捉到变化，并执行“成功”情况的回调。"><a href="#把-Promise-的状态置为完成态（Resolved），这时-then-方法就能捕捉到变化，并执行“成功”情况的回调。" class="headerlink" title="把 Promise 的状态置为完成态（Resolved），这时 then 方法就能捕捉到变化，并执行“成功”情况的回调。"></a>把 Promise 的状态置为完成态（Resolved），这时 then 方法就能捕捉到变化，并执行“成功”情况的回调。</h3><p>下面做一个买笔写作业上交的演示，它们是层层依赖的关系，下一步的的操作需要使用上一部操作的结果。（这里使用 setTimeout 模拟异步操作），正式开发可以用 ajax 异步</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">//买笔</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">buy</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"开始买笔"</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"买了笔芯"</span>);</span><br><span class="line">            resolve(<span class="string">"数学作业"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line">//写作业</span><br><span class="line"><span class="keyword">function</span> work(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始写作业："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"写完作业"</span>);</span><br><span class="line">            resolve(<span class="string">"作业本"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> out(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始上交："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"上交完毕"</span>);</span><br><span class="line">            resolve(<span class="string">"得分：A"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line">/* 不建议使用这种方式</span><br><span class="line">buy().<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    <span class="built_in">return</span> work(data);</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    <span class="built_in">return</span> out(data);</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);*/</span><br><span class="line"></span><br><span class="line">//推荐这种简化的写法</span><br><span class="line">buy().<span class="keyword">then</span>(work).<span class="keyword">then</span>(out).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果：<br><img src="images/j1.png" alt="resolve()方法"></p>
+<p>正式开发用ajax异步：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var promise = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        url:<span class="string">'/api/poisearch.json'</span>,</span><br><span class="line">        method:<span class="string">'get'</span>,</span><br><span class="line">        datatype:<span class="string">'json'</span>,</span><br><span class="line">        success:(res) =&gt;&#123;</span><br><span class="line">            resolve(res)</span><br><span class="line">        &#125;,</span><br><span class="line">        error:(err)=&gt;&#123;</span><br><span class="line">            reject(err)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="keyword">function</span>(res)&#123;</span><br><span class="line">    <span class="built_in">return</span> res.data</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    <span class="built_in">return</span> data.result;</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(result)&#123;</span><br><span class="line">    console.log(result)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//推荐使用箭头函数简写成,极大提升了代码的简洁性和可读性</span><br><span class="line">promise.then(res =&gt; res.data).<span class="keyword">then</span>(data =&gt; data.result).<span class="keyword">then</span>(result =&gt; console.log(result));</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h3 id="reject-方法"><a href="#reject-方法" class="headerlink" title="reject()方法"></a>reject()方法</h3><h3 id="就是把-Promise-的状态置为已失败（Rejected），这时-then-方法就能捕捉到变化，并执行“失败”情况的回调。"><a href="#就是把-Promise-的状态置为已失败（Rejected），这时-then-方法就能捕捉到变化，并执行“失败”情况的回调。" class="headerlink" title="就是把 Promise 的状态置为已失败（Rejected），这时 then 方法就能捕捉到变化，并执行“失败”情况的回调。"></a>就是把 Promise 的状态置为已失败（Rejected），这时 then 方法就能捕捉到变化，并执行“失败”情况的回调。</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">rebuy</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"开始买笔"</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"买笔失败"</span>);</span><br><span class="line">            reject(<span class="string">"没带够钱"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> rework(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始写作业："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"写完作业"</span>);</span><br><span class="line">            resolve(<span class="string">"作业本"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rebuy().<span class="keyword">then</span>(rework,<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果：<br><img src="images/j2.png" alt="reject()方法"></p>
+<hr>
+<h3 id="catch-方法"><a href="#catch-方法" class="headerlink" title="catch()方法"></a>catch()方法</h3><h3 id="作用一：它可以和-then-的第二个参数一样，用来指定-reject-的回调"><a href="#作用一：它可以和-then-的第二个参数一样，用来指定-reject-的回调" class="headerlink" title="作用一：它可以和 then 的第二个参数一样，用来指定 reject 的回调"></a>作用一：它可以和 then 的第二个参数一样，用来指定 reject 的回调</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">rebuy</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"开始买笔"</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"买笔失败"</span>);</span><br><span class="line">            reject(<span class="string">"没带够钱"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> rework(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始写作业："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"写完作业"</span>);</span><br><span class="line">            resolve(<span class="string">"作业本"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rebuy().<span class="keyword">then</span>(rework).catch(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果：<br><img src="images/j3.png" alt="catch()方法"></p>
+<h3 id="作用二，当执行resolve的回调时，如果抛出异常（代码出错），也不会报错卡死-js，而是会进到这个-catch方法中。"><a href="#作用二，当执行resolve的回调时，如果抛出异常（代码出错），也不会报错卡死-js，而是会进到这个-catch方法中。" class="headerlink" title="作用二，当执行resolve的回调时，如果抛出异常（代码出错），也不会报错卡死 js，而是会进到这个 catch方法中。"></a>作用二，当执行resolve的回调时，如果抛出异常（代码出错），也不会报错卡死 js，而是会进到这个 catch方法中。</h3><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">buy</span></span>()&#123;</span><br><span class="line">console.log(<span class="string">"开始买笔"</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"买了笔芯"</span>);</span><br><span class="line">            resolve(<span class="string">"数学作业"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> work(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始写作业："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"写完作业"</span>);</span><br><span class="line">            resolve(<span class="string">"作业本"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">buy().<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    throw new Error(<span class="string">"买了坏的笔芯"</span>);</span><br><span class="line">    work(data);</span><br><span class="line">&#125;).catch(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果：<br><img src="images/j4.png" alt="catch()方法"></p>
+<hr>
+<h3 id="all-方法"><a href="#all-方法" class="headerlink" title="all()方法"></a>all()方法</h3><h4 id="Promise-的-all-方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。"><a href="#Promise-的-all-方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。" class="headerlink" title="Promise 的 all 方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。"></a>Promise 的 all 方法提供了并行执行异步操作的能力，并且在所有异步操作执行完后才执行回调。</h4><p>比如下面代码，两个个异步操作是并行执行的，等到它们都执行完后才会进到 then 里面。同时 all 会把所有异步操作的结果放进一个数组中传给 then。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//买作业本</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">cutUp</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">'挑作业本'</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve, reject)&#123; //做一些异步操作</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">'挑好购买作业本'</span>);</span><br><span class="line">            resolve(<span class="string">'新的作业本'</span>);</span><br><span class="line">        &#125;, 1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//买笔</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">boil</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">'挑笔芯'</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve, reject)&#123; //做一些异步操作</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">'挑好购买笔芯'</span>);</span><br><span class="line">            resolve(<span class="string">'新的笔芯'</span>);</span><br><span class="line">        &#125;, 1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Promise.all([cutUp(),boil()]).<span class="keyword">then</span>(<span class="keyword">function</span>(results)&#123;</span><br><span class="line">    console.log(<span class="string">"写作业的工具都买好了"</span>);</span><br><span class="line">    console.log(results);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>结果：<br><img src="images/j5.png" alt="all()方法"></p>
+<hr>
+<h3 id="race-方法"><a href="#race-方法" class="headerlink" title="race()方法"></a>race()方法</h3><h4 id="race-的用法与-all一样，只不过-all是等所有异步操作都执行完毕后才执行-then-回调。"><a href="#race-的用法与-all一样，只不过-all是等所有异步操作都执行完毕后才执行-then-回调。" class="headerlink" title="race 的用法与 all一样，只不过 all是等所有异步操作都执行完毕后才执行 then 回调。"></a>race 的用法与 all一样，只不过 all是等所有异步操作都执行完毕后才执行 then 回调。</h4><h4 id="而-race只要有一个异步操作执行完毕，就立刻执行-then-回调。"><a href="#而-race只要有一个异步操作执行完毕，就立刻执行-then-回调。" class="headerlink" title="而 race只要有一个异步操作执行完毕，就立刻执行 then 回调。"></a>而 race只要有一个异步操作执行完毕，就立刻执行 then 回调。</h4><p>注意：其它没有执行完毕的异步操作仍然会继续执行，而不是停止。</p>
+<p>这里我们将上面样例的 all 改成 race<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Promise.race([cutUp(), boil()]).<span class="keyword">then</span>(<span class="keyword">function</span>(results)&#123;</span><br><span class="line">    console.log(<span class="string">"哈哈，我先买好啦"</span>);</span><br><span class="line">    console.log(results);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div></p>
+<p>结果：<br><img src="images/j6.png" alt="race()方法"></p>
+<p>race 使用场景很多。比如我们可以用 race 给某个异步请求设置超时时间，并且在超时后执行相应的操作。</p>
+<p>请求某个图片资源</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">requestImg</span></span>()&#123;</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve, reject)&#123;</span><br><span class="line">    var img = new Image();</span><br><span class="line">    img.onload = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">       resolve(img);</span><br><span class="line">    &#125;</span><br><span class="line">    img.src = <span class="string">'xxxxxx'</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//延时函数，用于给请求计时</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">timeout</span></span>()&#123;</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve, reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            reject(<span class="string">'图片请求超时'</span>);</span><br><span class="line">        &#125;, 5000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Promise.race([requestImg(), timeout()]).<span class="keyword">then</span>(<span class="keyword">function</span>(results)&#123;</span><br><span class="line">    console.log(results);</span><br><span class="line">&#125;).catch(<span class="keyword">function</span>(reason)&#123;</span><br><span class="line">    console.log(reason);</span><br><span class="line">&#125;);</span><br><span class="line">//上面代码 requestImg 函数异步请求一张图片，timeout 函数是一个延时 5 秒的异步操作。我们将它们一起放在 race 中赛跑。</span><br><span class="line">//如果 5 秒内图片请求成功那么便进入 <span class="keyword">then</span> 方法，执行正常的流程。</span><br><span class="line">//如果 5 秒钟图片还未成功返回，那么则进入 catch，报“图片请求超时”的信息。</span><br></pre></td></tr></table></figure></div>
+<p>结果：<br><img src="images/j7.png" alt="race()方法实例"></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/28/ES6中的promise的实现原理/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            ES6中的promise的实现原理
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/28/css3的flex弹性布局/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">css3的flex弹性布局</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise的实现原理/">ES6中的promise的实现原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise用法/">ES6中的promise用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/css3的flex弹性布局/">css3的flex弹性布局</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/Vue中MVVM模式实现数据的双向绑定的原理/">Vue中MVVM模式实现数据双向绑定的原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/DOM/">DOM</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

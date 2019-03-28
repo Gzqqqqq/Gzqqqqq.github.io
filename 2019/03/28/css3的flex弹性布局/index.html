@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>css3的flex弹性布局 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="css3为我们提供了一种可以伸缩的灵活的web页面布局方式flexbox布局，它具有很强大的功能，可以很轻松的实现很多复杂布局。可以简便、完整、响应式的实现各种页面布局。目前已经得到所有的浏览器的支持。flex是flexbox的缩写，以为“弹性布局”，用来为盒子模型提供最大的灵活性。  基本概念采用flex布局的元素称为flex容器，容器的直接子元素为flex项目，容器默认有两个轴心线，用于项目的">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css3的flex弹性布局">
+<meta property="og:url" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="css3为我们提供了一种可以伸缩的灵活的web页面布局方式flexbox布局，它具有很强大的功能，可以很轻松的实现很多复杂布局。可以简便、完整、响应式的实现各种页面布局。目前已经得到所有的浏览器的支持。flex是flexbox的缩写，以为“弹性布局”，用来为盒子模型提供最大的灵活性。  基本概念采用flex布局的元素称为flex容器，容器的直接子元素为flex项目，容器默认有两个轴心线，用于项目的">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/images/c1.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/images/c2.png">
+<meta property="og:updated_time" content="2019-03-28T07:44:50.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css3的flex弹性布局">
+<meta name="twitter:description" content="css3为我们提供了一种可以伸缩的灵活的web页面布局方式flexbox布局，它具有很强大的功能，可以很轻松的实现很多复杂布局。可以简便、完整、响应式的实现各种页面布局。目前已经得到所有的浏览器的支持。flex是flexbox的缩写，以为“弹性布局”，用来为盒子模型提供最大的灵活性。  基本概念采用flex布局的元素称为flex容器，容器的直接子元素为flex项目，容器默认有两个轴心线，用于项目的">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/images/c1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-css3的flex弹性布局" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      css3的flex弹性布局
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/28/css3的flex弹性布局/" class="article-date">
+  <time datetime="2019-03-28T06:42:51.000Z" itemprop="datePublished">2019-03-28</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <p>css3为我们提供了一种可以伸缩的灵活的web页面布局方式flexbox布局，它具有很强大的功能，可以很轻松的实现很多复杂布局。可以简便、完整、响应式的实现各种页面布局。目前已经得到所有的浏览器的支持。flex是flexbox的缩写，以为“弹性布局”，用来为盒子模型提供最大的灵活性。</p>
+<hr>
+<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>采用flex布局的元素称为<strong>flex容器</strong>，容器的直接子元素为<strong>flex项目</strong>，容器默认有两个轴心线，用于项目的对齐与排列，水平主轴为main axis，垂直主轴为cross axis，主轴开始的位置为start，结束的位置为end</p>
+<p>主轴和交叉轴的判定：如果flex-direction为row，则主轴是水平方向，如果是column，则主轴是垂直方向的。</p>
+<h3 id="flex属性"><a href="#flex属性" class="headerlink" title="flex属性"></a>flex属性</h3><p>将任意元素的display设置为flex，可将其转换为flex容器，设置为flex容器后，子元素的float、clear和vertical-align属性将失效。</p>
+<h3 id="flex容器的属性"><a href="#flex容器的属性" class="headerlink" title="flex容器的属性"></a>flex容器的属性</h3><table>
+<thead>
+<tr>
+<th>属性名描述</th>
+<th>属性名</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主轴方向</td>
+<td>flex-direction</td>
+<td>row；row-reverse；column；column-reverse</td>
+</tr>
+<tr>
+<td>换行</td>
+<td>flex-wrap</td>
+<td>nowrap；wrap；wrap-reverse</td>
+</tr>
+<tr>
+<td>上面两个属性的简写</td>
+<td>flex-float</td>
+<td>row nowrap</td>
+</tr>
+<tr>
+<td>主轴对齐方式</td>
+<td>justify-content</td>
+<td>flex-start；flex-end；center；space-between；space-around</td>
+</tr>
+<tr>
+<td>交叉轴对齐方式</td>
+<td>align-items</td>
+<td>stretch；flex-start；flex-end；center；baseline</td>
+</tr>
+<tr>
+<td>多根轴线对齐方式</td>
+<td>align-content</td>
+<td>stretch；flex-start；flex-end；center；space-between；space-around</td>
+</tr>
+</tbody>
+</table>
+<h3 id="flex项目的属性"><a href="#flex项目的属性" class="headerlink" title="flex项目的属性"></a>flex项目的属性</h3><table>
+<thead>
+<tr>
+<th>属性名描述</th>
+<th>属性名</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顺序</td>
+<td>order</td>
+<td>number 类型（数值越小越靠前，默认为 0）</td>
+</tr>
+<tr>
+<td>放大比例</td>
+<td>flex-grow</td>
+<td>number 类型（默值 0，如果有剩余空间也不放大，若值为1放大，2是1的双倍，以此类推）</td>
+</tr>
+<tr>
+<td>缩小比例</td>
+<td>flex-shrink</td>
+<td>number 类型（默值 1，如果空间不足会缩小，值为0不缩）</td>
+</tr>
+<tr>
+<td>项目自身大小</td>
+<td>flex-basis</td>
+<td>auto（默认值，为原来的大小）；length（设置固定值 50px/50%）</td>
+</tr>
+<tr>
+<td>上面三个属性的简写</td>
+<td>flex</td>
+<td>0 1 auto（默认值）；两个快捷值 auto (1 1 auto) 和 none (0 0 auto)</td>
+</tr>
+<tr>
+<td>项目自身对齐</td>
+<td>align-self</td>
+<td>auto；flex-start；flex-end；center；baseline；stretch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="基础的栅格系统"><a href="#基础的栅格系统" class="headerlink" title="基础的栅格系统"></a>基础的栅格系统</h3><h4 id="每项宽度相同，自然平分，高度默认都相同"><a href="#每项宽度相同，自然平分，高度默认都相同" class="headerlink" title="每项宽度相同，自然平分，高度默认都相同"></a>每项宽度相同，自然平分，高度默认都相同</h4><p>html代码：<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"container"</span>&gt;</span><br><span class="line">	&lt;div class=<span class="string">"item"</span>&gt;left&lt;/div&gt;</span><br><span class="line">	&lt;div class=<span class="string">"item"</span>&gt;main&lt;/div&gt;</span><br><span class="line">	&lt;div class=<span class="string">"item"</span>&gt;right&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></div></p>
+<p>css代码：<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/*flex容器*/</span><br><span class="line">.container&#123;</span><br><span class="line">	display: flex;           /*设置为flex弹性布局*/</span><br><span class="line">	/*flex-direction: row;   /*设置伸缩方向为横向*/*/</span><br><span class="line">	/*flex-wrap: nowrap;     /*设置可以换行*/*/</span><br><span class="line">	flex-flow: row nowrap;   /*同时设置方向和是否换行*/</span><br><span class="line">	box-sizing: border-box;</span><br><span class="line">	width: 700px;</span><br><span class="line">	height: 105px;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*flex项目*/</span><br><span class="line">.container .item&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: rgba(0,0,0,.1);</span><br><span class="line">	text-align: center;</span><br><span class="line">	line-height: 92px;</span><br><span class="line">	border: 1px solid yellow;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!--设置每项可自动放大缩小且平分容器--&gt;</span><br><span class="line">.container .item&#123;</span><br><span class="line">	flex: auto;    &lt;!--*（1，1，auto）--&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
+<p><img src="images/c1.png" alt="平分布局"></p>
+<hr>
+<h4 id="某一项相对固定宽度，其他项自适应"><a href="#某一项相对固定宽度，其他项自适应" class="headerlink" title="某一项相对固定宽度，其他项自适应"></a>某一项相对固定宽度，其他项自适应</h4><p>html不变，修改css部分代码</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.container .item:first-child,</span><br><span class="line">.container .item:last-child&#123;</span><br><span class="line">	flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">.container .item:nth-child(2)&#123;</span><br><span class="line">	width: 60%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><img src="images/c2.png" alt="等比固定布局"></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/28/ES6中的promise用法/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            ES6中的promise用法
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/25/Vue中MVVM模式实现数据的双向绑定的原理/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">Vue中MVVM模式实现数据双向绑定的原理</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise的实现原理/">ES6中的promise的实现原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise用法/">ES6中的promise用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/css3的flex弹性布局/">css3的flex弹性布局</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/Vue中MVVM模式实现数据的双向绑定的原理/">Vue中MVVM模式实现数据双向绑定的原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/25/DOM/">DOM</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
