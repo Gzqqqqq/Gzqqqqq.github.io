@@ -93,7 +93,9 @@
     
     <div class="article-content article-content-doorframe" itemprop="articleBody">
       
-        <p>Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。</p>
+       
+  	
+  	  <p>Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。</p>
 <hr>
 <h3 id="Promise对象有以下两个特点："><a href="#Promise对象有以下两个特点：" class="headerlink" title="Promise对象有以下两个特点："></a>Promise对象有以下两个特点：</h3><p>（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是Promise这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。</p>
 <p>（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从Pending变为Resolved和从Pending变为Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对Promise对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</p>
@@ -126,8 +128,9 @@
 <div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">requestImg</span></span>()&#123;</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve, reject)&#123;</span><br><span class="line">    var img = new Image();</span><br><span class="line">    img.onload = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">       resolve(img);</span><br><span class="line">    &#125;</span><br><span class="line">    img.src = <span class="string">'xxxxxx'</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//延时函数，用于给请求计时</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">timeout</span></span>()&#123;</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve, reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            reject(<span class="string">'图片请求超时'</span>);</span><br><span class="line">        &#125;, 5000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Promise.race([requestImg(), timeout()]).<span class="keyword">then</span>(<span class="keyword">function</span>(results)&#123;</span><br><span class="line">    console.log(results);</span><br><span class="line">&#125;).catch(<span class="keyword">function</span>(reason)&#123;</span><br><span class="line">    console.log(reason);</span><br><span class="line">&#125;);</span><br><span class="line">//上面代码 requestImg 函数异步请求一张图片，timeout 函数是一个延时 5 秒的异步操作。我们将它们一起放在 race 中赛跑。</span><br><span class="line">//如果 5 秒内图片请求成功那么便进入 <span class="keyword">then</span> 方法，执行正常的流程。</span><br><span class="line">//如果 5 秒钟图片还未成功返回，那么则进入 catch，报“图片请求超时”的信息。</span><br></pre></td></tr></table></figure></div>
 <p>结果：<br><img src="images/j7.png" alt="race()方法实例"></p>
 
-      
-    </div>
+  	
+  
+</div>
     
       <footer class="article-footer">
         完

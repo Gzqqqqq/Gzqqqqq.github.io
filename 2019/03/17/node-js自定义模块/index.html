@@ -85,7 +85,9 @@
     
     <div class="article-content article-content-doorframe" itemprop="articleBody">
       
-        <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>node.js拥有许多的系统模块如（http、fs）,但是同样我们可以自定义模块。<br>自定义模块需要export其中想要暴露的数据变量，使用模块的js文件需要用require引入模块js<br>nodejs中没有全局变量，模块中的数据都是通过exports导出的。</p>
+       
+  	
+  	  <h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>node.js拥有许多的系统模块如（http、fs）,但是同样我们可以自定义模块。<br>自定义模块需要export其中想要暴露的数据变量，使用模块的js文件需要用require引入模块js<br>nodejs中没有全局变量，模块中的数据都是通过exports导出的。</p>
 <h4 id="输出（exports）"><a href="#输出（exports）" class="headerlink" title="输出（exports）"></a>输出（exports）</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.a = 12;</span><br><span class="line">exports.b = 23;</span><br><span class="line">exports.c = 45;</span><br></pre></td></tr></table></figure></div>
 <h4 id="批量输出（module）"><a href="#批量输出（module）" class="headerlink" title="批量输出（module）"></a>批量输出（module）</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">module.exports=&#123;a:12,b:23,c:45&#125;;</span><br></pre></td></tr></table></figure></div>
 <h4 id="引入模块-require-："><a href="#引入模块-require-：" class="headerlink" title="引入模块(require)："></a>引入模块(require)：</h4><p>引入系统模块不需要加‘./’，而引入自定义模块时，即使在当前目录，依然不能省略‘./’，如果不加则代表从系统模块中寻找对应姓名的模块。<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const modl = reqiure(<span class="string">'./modl'</span>);</span><br><span class="line">alert(modl.a,modl.b,modl.c);</span><br></pre></td></tr></table></figure></div></p>
@@ -95,8 +97,9 @@
 <h3 id="为什么需要打包？"><a href="#为什么需要打包？" class="headerlink" title="为什么需要打包？"></a>为什么需要打包？</h3><p>（1）模块化<br>（2）优化加载速度<br>（3）使用新的开发模式</p>
 <h3 id="webpack有什么优点？"><a href="#webpack有什么优点？" class="headerlink" title="webpack有什么优点？"></a>webpack有什么优点？</h3><p>（1）同时支持ConmmonJs与AMD<br>（2）一切都可以打包<br>（3）分模块打包</p>
 
-      
-    </div>
+  	
+  
+</div>
     
       <footer class="article-footer">
         完
