@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>区分slice、splice、split | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="1.slice（数组）用法：array.slice(start,end)解释：该方法是对数组进行部分截取，并返回一个数组副本；参数start是截取的开始数组索引，end参数等于你要取的最后一个字符的位置值加上1（可选） 12345678910111213141516171819202122//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组尾var a=[1,2,3,4,5,6];v">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区分slice、splice、split">
+<meta property="og:url" content="http://yoursite.com/2019/03/29/区分slice、splice、split/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="1.slice（数组）用法：array.slice(start,end)解释：该方法是对数组进行部分截取，并返回一个数组副本；参数start是截取的开始数组索引，end参数等于你要取的最后一个字符的位置值加上1（可选） 12345678910111213141516171819202122//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组尾var a=[1,2,3,4,5,6];v">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T07:57:17.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="区分slice、splice、split">
+<meta name="twitter:description" content="1.slice（数组）用法：array.slice(start,end)解释：该方法是对数组进行部分截取，并返回一个数组副本；参数start是截取的开始数组索引，end参数等于你要取的最后一个字符的位置值加上1（可选） 12345678910111213141516171819202122//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组尾var a=[1,2,3,4,5,6];v">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-区分slice、splice、split" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      区分slice、splice、split
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/29/区分slice、splice、split/" class="article-date">
+  <time datetime="2019-03-29T07:54:48.000Z" itemprop="datePublished">2019-03-29</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+       
+  	
+  	  <h3 id="1-slice（数组）"><a href="#1-slice（数组）" class="headerlink" title="1.slice（数组）"></a>1.slice（数组）</h3><h4 id="用法：array-slice-start-end"><a href="#用法：array-slice-start-end" class="headerlink" title="用法：array.slice(start,end)"></a>用法：array.slice(start,end)</h4><p>解释：该方法是对数组进行部分截取，并返回一个数组副本；参数start是截取的开始数组索引，end参数等于你要取的最后一个字符的位置值加上1（可选）</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//如果不传入参数二，那么将从参数一的索引位置开始截取，一直到数组尾</span><br><span class="line">var a=[1,2,3,4,5,6];</span><br><span class="line">var b=a.slice(0,3);    //[1,2,3]</span><br><span class="line">var c=a.slice(3);       //[4,5,6]</span><br><span class="line"></span><br><span class="line">//如果两个参数中的任何一个是负数，则从数组结尾开始数</span><br><span class="line">//当只传入一个参数，且是负数时，从数组结尾找到该位置，然后截取到结束</span><br><span class="line">var a=[1,2,3,4,5,6];</span><br><span class="line">var b=a.slice(-1);    //[6]</span><br><span class="line"></span><br><span class="line">//当只传入一个参数，是负数时,并且参数的绝对值大于数组length时，会截取整个数组</span><br><span class="line">var a=[1,2,3,4,5,6];</span><br><span class="line">var b=a.slice(-6);    //[1,2,3,4,5,6]</span><br><span class="line">var c=a.slice(-8);    //[1,2,3,4,5,6]</span><br><span class="line"></span><br><span class="line">//当传入两个参数一正一负时，分别从前后开始数，有交集则为空，无交集则之间</span><br><span class="line">var a=[1,2,3,4,5,6];</span><br><span class="line">var b=a.slice(2,-3);    //[3]</span><br><span class="line"></span><br><span class="line">//当传入一个参数，大于length时，将返回一个空数组</span><br><span class="line">var a=[1,2,3,4,5,6];</span><br><span class="line">var b=a.slice(6);　　//[]</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-slice（字符串）"><a href="#2-slice（字符串）" class="headerlink" title="2.slice（字符串）"></a>2.slice（字符串）</h3><h4 id="用法：string-slice-start-end"><a href="#用法：string-slice-start-end" class="headerlink" title="用法：string.slice(start,end)"></a>用法：string.slice(start,end)</h4><p>解释：slice方法复制string的一部分来构造一个新的字符串，用法与参数匀和数组的slice方法一样;end参数等于你要取的最后一个字符的位置值加上1</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a=<span class="string">"i am a boy"</span>;</span><br><span class="line">var b=a.slice(0,6);    //<span class="string">"i am a"</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="substring-方法"><a href="#substring-方法" class="headerlink" title="substring()方法"></a>substring()方法</h4><p>它与slice作用相同，但有一些奇怪的规则。</p>
+<p>当开始的下标大于结束的下标，该方法这会自动调整两个值的位置进行输出。如果参数是负数，substring()方法会自动将负数转为0</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">"aulence"</span>;</span><br><span class="line">var a = str.substring(5,2)  //<span class="string">"len"</span></span><br><span class="line">var b = str.substring(2,5)  //<span class="string">"len"</span></span><br><span class="line">var c = str.substring(-2,-5) //<span class="string">""</span></span><br><span class="line">var d = str.substring(-2)   //<span class="string">"aulence"</span></span><br></pre></td></tr></table></figure></div>
+<h4 id="substr-方法"><a href="#substr-方法" class="headerlink" title="substr()方法"></a>substr()方法</h4><p>substr()方法的作用和slice()方法仍然很相似，不同的是当substr()方法配置了第二个参数后，该值不再是指字符串的结束位置，而是字符串的长度（length）。</p>
+<p>第二个参数为长度，所以不能为负数。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">"aulence"</span>;</span><br><span class="line">var a = str.substr(2)      //<span class="string">"lence"</span></span><br><span class="line">var b = str.substr(2,3)    //<span class="string">"len"</span></span><br><span class="line">var c = str.substr(3,0)    //<span class="string">""</span></span><br><span class="line">var d = str.substr(3,-2)   //<span class="string">""</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="3-splice（数组）"><a href="#3-splice（数组）" class="headerlink" title="3.splice（数组）"></a>3.splice（数组）</h3><h4 id="用法：array-splice-start-deleteCount-item…"><a href="#用法：array-splice-start-deleteCount-item…" class="headerlink" title="用法：array.splice(start,deleteCount,item…)"></a>用法：array.splice(start,deleteCount,item…)</h4><p>解释：splice方法从array中移除一个或多个数组，并用新的item替换它们。参数start是从数组array中移除元素的开始位置。参数deleteCount是要移除的元素的个数。</p>
+<p>如果有额外的参数，那么item会插入到被移除元素的位置上。它返回一个包含被移除元素的数组。<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a=[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];</span><br><span class="line">var b=a.splice(1,1,<span class="string">'e'</span>,<span class="string">'f'</span>);    //a=[<span class="string">'a'</span>,<span class="string">'e'</span>,<span class="string">'f'</span>,<span class="string">'c'</span>],b=[<span class="string">'b'</span>]</span><br></pre></td></tr></table></figure></div></p>
+<h3 id="4-split（字符串）"><a href="#4-split（字符串）" class="headerlink" title="4.split（字符串）"></a>4.split（字符串）</h3><h4 id="用法：string-split-separator-limit"><a href="#用法：string-split-separator-limit" class="headerlink" title="用法：string.split(separator,limit)"></a>用法：string.split(separator,limit)</h4><p>解释：split方法把这个string分割成片段来创建一个字符串数组。可选参数limit可以限制被分割的片段数量。separator参数可以是一个字符串或一个正则表达式。如果<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var a=<span class="string">"0123456"</span>;</span><br><span class="line">var b=a.split(<span class="string">""</span>,3);    //b=[<span class="string">"0"</span>,<span class="string">"1"</span>,<span class="string">"2"</span>]</span><br></pre></td></tr></table></figure></div></p>
+
+  	
+  
+</div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/28/版本管理工具（git）常用指令/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">版本管理工具（git）常用指令</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/29/区分slice、splice、split/">区分slice、splice、split</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/版本管理工具（git）常用指令/">版本管理工具（git）常用指令</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise的实现原理/">ES6中的promise的实现原理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/ES6中的promise用法/">ES6中的promise用法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/css3的flex弹性布局/">css3的flex弹性布局</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

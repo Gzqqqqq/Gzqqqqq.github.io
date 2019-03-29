@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j5.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j6.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/28/ES6中的promise用法/images/j7.png">
-<meta property="og:updated_time" content="2019-03-28T08:24:52.490Z">
+<meta property="og:updated_time" content="2019-03-28T11:54:51.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6中的promise用法">
 <meta name="twitter:description" content="Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。  Promise对象有以下两个特点：（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操">
@@ -100,7 +100,7 @@
 <h3 id="Promise对象有以下两个特点："><a href="#Promise对象有以下两个特点：" class="headerlink" title="Promise对象有以下两个特点："></a>Promise对象有以下两个特点：</h3><p>（1）对象的状态不受外界影响。Promise对象代表一个异步操作，有三种状态：Pending（进行中）、Resolved（已完成，又称 Fulfilled）和Rejected（已失败）。只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是Promise这个名字的由来，它的英语意思就是“承诺”，表示其他手段无法改变。</p>
 <p>（2）一旦状态改变，就不会再变，任何时候都可以得到这个结果。Promise对象的状态改变，只有两种可能：从Pending变为Resolved和从Pending变为Rejected。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对Promise对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</p>
 <p>有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易。</p>
-<h4 id="简单来说，Promise-就是用同步的方式写异步的代码，用来解决回调问题"><a href="#简单来说，Promise-就是用同步的方式写异步的代码，用来解决回调问题" class="headerlink" title="简单来说，Promise 就是用同步的方式写异步的代码，用来解决回调问题"></a>简单来说，Promise 就是用同步的方式写异步的代码，用来解决回调问题</h4><h3 id="then-方法"><a href="#then-方法" class="headerlink" title="then()方法"></a>then()方法</h3><p>then 方法就是把原来的回调写法分离出来，在异步操作执行完后，用链式调用的方式执行回调函数。<br>而 Promise 的优势就在于这个链式调用。我们可以在 then 方法中继续写 Promise 对象并返回，然后继续调用 then 来进行回调操作。<br>可有两个参数，第一个是成功 resolve 调用的方法，第二个是失败 reject 调用的方法</p>
+<h3 id="简单来说，Promise-就是用同步的方式写异步的代码，用来解决回调问题"><a href="#简单来说，Promise-就是用同步的方式写异步的代码，用来解决回调问题" class="headerlink" title="简单来说，Promise 就是用同步的方式写异步的代码，用来解决回调问题"></a>简单来说，Promise 就是用同步的方式写异步的代码，用来解决回调问题</h3><h3 id="then-方法"><a href="#then-方法" class="headerlink" title="then()方法"></a>then()方法</h3><p>then 方法就是把原来的回调写法分离出来，在异步操作执行完后，用链式调用的方式执行回调函数。<br>而 Promise 的优势就在于这个链式调用。我们可以在 then 方法中继续写 Promise 对象并返回，然后继续调用 then 来进行回调操作。<br>可有两个参数，第一个是成功 resolve 调用的方法，第二个是失败 reject 调用的方法</p>
 <hr>
 <h3 id="resolve-方法"><a href="#resolve-方法" class="headerlink" title="resolve()方法"></a>resolve()方法</h3><h3 id="把-Promise-的状态置为完成态（Resolved），这时-then-方法就能捕捉到变化，并执行“成功”情况的回调。"><a href="#把-Promise-的状态置为完成态（Resolved），这时-then-方法就能捕捉到变化，并执行“成功”情况的回调。" class="headerlink" title="把 Promise 的状态置为完成态（Resolved），这时 then 方法就能捕捉到变化，并执行“成功”情况的回调。"></a>把 Promise 的状态置为完成态（Resolved），这时 then 方法就能捕捉到变化，并执行“成功”情况的回调。</h3><p>下面做一个买笔写作业上交的演示，它们是层层依赖的关系，下一步的的操作需要使用上一部操作的结果。（这里使用 setTimeout 模拟异步操作），正式开发可以用 ajax 异步</p>
 <div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">//买笔</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">buy</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"开始买笔"</span>);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"买了笔芯"</span>);</span><br><span class="line">            resolve(<span class="string">"数学作业"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line">//写作业</span><br><span class="line"><span class="keyword">function</span> work(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始写作业："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"写完作业"</span>);</span><br><span class="line">            resolve(<span class="string">"作业本"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> out(data)&#123;</span><br><span class="line">    console.log(<span class="string">"开始上交："</span>+data);</span><br><span class="line">    var p = new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">            console.log(<span class="string">"上交完毕"</span>);</span><br><span class="line">            resolve(<span class="string">"得分：A"</span>);</span><br><span class="line">        &#125;,1000);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line">/* 不建议使用这种方式</span><br><span class="line">buy().<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    <span class="built_in">return</span> work(data);</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    <span class="built_in">return</span> out(data);</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);*/</span><br><span class="line"></span><br><span class="line">//推荐这种简化的写法</span><br><span class="line">buy().<span class="keyword">then</span>(work).<span class="keyword">then</span>(out).<span class="keyword">then</span>(<span class="keyword">function</span>(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
@@ -207,7 +207,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
     </div>
   </div>
 
@@ -217,7 +217,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+      <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
     </div>
   </div>
 
@@ -238,6 +238,14 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/2019/03/29/区分slice、splice、split/">区分slice、splice、split</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/28/版本管理工具（git）常用指令/">版本管理工具（git）常用指令</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/28/ES6中的promise的实现原理/">ES6中的promise的实现原理</a>
           </li>
         
@@ -247,14 +255,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/2019/03/28/css3的flex弹性布局/">css3的flex弹性布局</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/25/Vue中MVVM模式实现数据的双向绑定的原理/">Vue中MVVM模式实现数据双向绑定的原理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/25/DOM/">DOM</a>
           </li>
         
       </ul>
