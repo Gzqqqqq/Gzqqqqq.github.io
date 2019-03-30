@@ -14,17 +14,17 @@
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3的flex弹性布局">
-<meta property="og:url" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/index.html">
+<meta property="og:url" content="http://Gzqqqqq.github.io/public/2019/03/28/css3的flex弹性布局/index.html">
 <meta property="og:site_name" content="Gzqqqqq">
 <meta property="og:description" content="css3为我们提供了一种可以伸缩的灵活的web页面布局方式flexbox布局，它具有很强大的功能，可以很轻松的实现很多复杂布局。可以简便、完整、响应式的实现各种页面布局。目前已经得到所有的浏览器的支持。flex是flexbox的缩写，以为“弹性布局”，用来为盒子模型提供最大的灵活性。  基本概念采用flex布局的元素称为flex容器，容器的直接子元素为flex项目，容器默认有两个轴心线，用于项目的">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/c1.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/c2.png">
+<meta property="og:image" content="http://gzqqqqq.github.io/public/2019/03/28/css3的flex弹性布局/css3的flex弹性布局/c1.png">
+<meta property="og:image" content="http://gzqqqqq.github.io/public/2019/03/28/css3的flex弹性布局/css3的flex弹性布局/c2.png">
 <meta property="og:updated_time" content="2019-03-30T01:20:46.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3的flex弹性布局">
 <meta name="twitter:description" content="css3为我们提供了一种可以伸缩的灵活的web页面布局方式flexbox布局，它具有很强大的功能，可以很轻松的实现很多复杂布局。可以简便、完整、响应式的实现各种页面布局。目前已经得到所有的浏览器的支持。flex是flexbox的缩写，以为“弹性布局”，用来为盒子模型提供最大的灵活性。  基本概念采用flex布局的元素称为flex容器，容器的直接子元素为flex项目，容器默认有两个轴心线，用于项目的">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/28/css3的flex弹性布局/c1.png">
+<meta name="twitter:image" content="http://gzqqqqq.github.io/public/2019/03/28/css3的flex弹性布局/css3的flex弹性布局/c1.png">
   
     <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
   
@@ -179,11 +179,11 @@
 </table>
 <h3 id="基础的栅格系统"><a href="#基础的栅格系统" class="headerlink" title="基础的栅格系统"></a>基础的栅格系统</h3><h4 id="每项宽度相同，自然平分，高度默认都相同"><a href="#每项宽度相同，自然平分，高度默认都相同" class="headerlink" title="每项宽度相同，自然平分，高度默认都相同"></a>每项宽度相同，自然平分，高度默认都相同</h4><p>html代码：<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=<span class="string">"container"</span>&gt;</span><br><span class="line">	&lt;div class=<span class="string">"item"</span>&gt;left&lt;/div&gt;</span><br><span class="line">	&lt;div class=<span class="string">"item"</span>&gt;main&lt;/div&gt;</span><br><span class="line">	&lt;div class=<span class="string">"item"</span>&gt;right&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></div></p>
 <p>css代码：<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/*flex容器*/</span><br><span class="line">.container&#123;</span><br><span class="line">	display: flex;           /*设置为flex弹性布局*/</span><br><span class="line">	/*flex-direction: row;   /*设置伸缩方向为横向*/*/</span><br><span class="line">	/*flex-wrap: nowrap;     /*设置可以换行*/*/</span><br><span class="line">	flex-flow: row nowrap;   /*同时设置方向和是否换行*/</span><br><span class="line">	box-sizing: border-box;</span><br><span class="line">	width: 700px;</span><br><span class="line">	height: 105px;</span><br><span class="line">	border: 1px solid red;</span><br><span class="line">	margin: 0 auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*flex项目*/</span><br><span class="line">.container .item&#123;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 100px;</span><br><span class="line">	background-color: rgba(0,0,0,.1);</span><br><span class="line">	text-align: center;</span><br><span class="line">	line-height: 92px;</span><br><span class="line">	border: 1px solid yellow;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!--设置每项可自动放大缩小且平分容器--&gt;</span><br><span class="line">.container .item&#123;</span><br><span class="line">	flex: auto;    &lt;!--*（1，1，auto）--&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></p>
-<p><img src="//yoursite.com/2019/03/28/css3的flex弹性布局/c1.png" alt="平分布局"></p>
+<p><img src="css3的flex弹性布局/c1.png" alt="平分布局"></p>
 <hr>
 <h4 id="某一项相对固定宽度，其他项自适应"><a href="#某一项相对固定宽度，其他项自适应" class="headerlink" title="某一项相对固定宽度，其他项自适应"></a>某一项相对固定宽度，其他项自适应</h4><p>html不变，修改css部分代码</p>
 <div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.container .item:first-child,</span><br><span class="line">.container .item:last-child&#123;</span><br><span class="line">	flex: 1;</span><br><span class="line">&#125;</span><br><span class="line">.container .item:nth-child(2)&#123;</span><br><span class="line">	width: 60%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<p><img src="//yoursite.com/2019/03/28/css3的flex弹性布局/c2.png" alt="等比固定布局"></p>
+<p><img src="css3的flex弹性布局/c2.png" alt="等比固定布局"></p>
 
   	
   
