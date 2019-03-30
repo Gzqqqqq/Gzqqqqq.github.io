@@ -699,11 +699,11 @@ html, body, #fullpage{
 #footer {
   box-shadow: 0 -1px 6px rgba(0, 0, 0, .3);
   padding: 4px;
-  color: white;
+  color: black;
   font-weight: 100;
 }
 #footer  a{
-  color: wheat;
+  color: crimson;
   font-weight: 100;
 }
 
