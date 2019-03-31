@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>执行上下文 | Gzqqqqq</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="“执行上下文”也叫“执行上下文环境”通俗的定义——在执行代码之前，把将要用到的所有的变量都事先拿出来，有的直接赋值了，有的先用undefined占个空。 第一种情况：先看这样一个例子： 1234567console.log(a);   //a is not definedconsole.log(a);   //undefinedvar a;          console.log(a);   /">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="执行上下文">
+<meta property="og:url" content="http://Gzqqqqq.github.io/public/2019/03/31/执行上下文/index.html">
+<meta property="og:site_name" content="Gzqqqqq">
+<meta property="og:description" content="“执行上下文”也叫“执行上下文环境”通俗的定义——在执行代码之前，把将要用到的所有的变量都事先拿出来，有的直接赋值了，有的先用undefined占个空。 第一种情况：先看这样一个例子： 1234567console.log(a);   //a is not definedconsole.log(a);   //undefinedvar a;          console.log(a);   /">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://gzqqqqq.github.io/public/2019/03/31/执行上下文/s1.png">
+<meta property="og:image" content="http://gzqqqqq.github.io/public/2019/03/31/执行上下文/f1.png">
+<meta property="og:updated_time" content="2019-03-31T02:34:29.743Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="执行上下文">
+<meta name="twitter:description" content="“执行上下文”也叫“执行上下文环境”通俗的定义——在执行代码之前，把将要用到的所有的变量都事先拿出来，有的直接赋值了，有的先用undefined占个空。 第一种情况：先看这样一个例子： 1234567console.log(a);   //a is not definedconsole.log(a);   //undefinedvar a;          console.log(a);   /">
+<meta name="twitter:image" content="http://gzqqqqq.github.io/public/2019/03/31/执行上下文/s1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-执行上下文" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      执行上下文
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2019/03/31/执行上下文/" class="article-date">
+  <time datetime="2019-03-31T02:25:39.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+       
+  	
+  	  <h4 id="“执行上下文”也叫“执行上下文环境”"><a href="#“执行上下文”也叫“执行上下文环境”" class="headerlink" title="“执行上下文”也叫“执行上下文环境”"></a>“执行上下文”也叫“执行上下文环境”</h4><p>通俗的定义——在执行代码之前，把将要用到的所有的<strong>变量</strong>都事先拿出来，有的<strong>直接赋值</strong>了，有的先<strong>用undefined占个空</strong>。</p>
+<h4 id="第一种情况："><a href="#第一种情况：" class="headerlink" title="第一种情况："></a>第一种情况：</h4><p>先看这样一个例子：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(a);   //a is not defined</span><br><span class="line"></span><br><span class="line">console.log(a);   //undefined</span><br><span class="line">var a;          </span><br><span class="line"></span><br><span class="line">console.log(a);   //undefined</span><br><span class="line">var a = 10;</span><br></pre></td></tr></table></figure></div>
+<p>分析如下：</p>
+<p>第一句报错：a未定义，很合理；</p>
+<p>第二句、第三句都是输出的undefined，说明浏览器在执行console.log(a)的时候已经知道a是undefined的，但是不知道a等于10（第三句）。</p>
+<p>因此在一段js代码拿过来真正的一句一句运行之前，浏览器已经做了一些“准备工作”，其中就包括<strong>对变量的声明，而不是赋值</strong>。变量的赋值是在赋值语句执行的时候进行的。如下图：</p>
+<p><img src="s1.png" alt="执行前的准备工作图"></p>
+<h4 id="第二种情况："><a href="#第二种情况：" class="headerlink" title="第二种情况："></a>第二种情况：</h4><p>在js开发中，无论在那个位置获取this都是有值的。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(this); </span><br><span class="line">//Window &#123;postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …&#125;</span><br></pre></td></tr></table></figure></div>
+<p>与第一种情况不同的是：<strong>第一种只对变量进行声明（并没有赋值）</strong>，而这种情况直接给this赋值。这也是“准备工作”情况要做的事情之一。</p>
+<h4 id="第三种情况："><a href="#第三种情况：" class="headerlink" title="第三种情况："></a>第三种情况：</h4><p>“函数表达式”和“函数声明”。在“准备工作”中待遇不同。<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(f1);         // <span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;&#125;;         //函数的声明</span><br><span class="line"></span><br><span class="line">console.log(f1);         //undefined</span><br><span class="line">var f2 = <span class="function"><span class="title">function</span></span>()&#123;&#125;;   //函数表达式</span><br></pre></td></tr></table></figure></div></p>
+<p><strong>注意</strong>：“函数声明”属于第二种赋值的情况，“函数表达式”属于第一种只声明，不赋值的情况。</p>
+<h4 id="“准备工作”的内容"><a href="#“准备工作”的内容" class="headerlink" title="“准备工作”的内容"></a>“准备工作”的内容</h4><ol>
+<li>对于变量、函数表达式进行<strong>变量声明</strong>，默认赋值为undefined，真正的赋值在赋值语句执行的时候进行。</li>
+<li>对于this，直接进行<strong>赋值</strong>。</li>
+<li>对于<strong>函数声明</strong>，也直接进行<strong>赋值</strong>操作。</li>
+</ol>
+<p>这三种数据<strong>的准备情况</strong>称为“<strong>执行上下文</strong>”或者“<strong>执行上下文环境</strong>”。</p>
+<p>javascript在执行一个<strong>代码段</strong>之前，都会进行这些“准备工作”来生成“执行上下文”。而这个代码段分为三种情况：<strong>全局代码</strong>（上面的例子全是）、<strong>函数体</strong>、<strong>eval代码</strong>。</p>
+<hr>
+<h3 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h3><p>所谓的代码段就是一段文本形式的代码。</p>
+<h4 id="全局代码"><a href="#全局代码" class="headerlink" title="全局代码"></a>全局代码</h4><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">'text/javascript'</span>&gt;</span><br><span class="line">    //代码段……</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+<h4 id="eval代码"><a href="#eval代码" class="headerlink" title="eval代码"></a>eval代码</h4><p>eval代码也是接受一段文本形式的代码,但是eval不常用，也不推荐使用。</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(alert(<span class="string">'123'</span>));</span><br></pre></td></tr></table></figure></div>
+<h4 id="函数体"><a href="#函数体" class="headerlink" title="函数体"></a>函数体</h4><p>函数体是代码段是因为函数在创建时，本质上是 new Function(…) 得来的，其中需要传入一个文本形式的参数作为函数体。</p>
+<p><img src="f1.png" alt="函数体代码块"></p>
+<p>在全局环境下的代码段中，执行上下文环境有如下数据</p>
+<ul>
+<li>变量、函数表达式的声明，默认赋值undefined</li>
+<li>this赋值</li>
+<li>函数声明赋值</li>
+</ul>
+<p>但是在函数体中，除了以上数据外，还有其他数据，例子如下</p>
+<p>函数的参数：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> fn(x)&#123;</span><br><span class="line">    console.log(arguments);   //[10]</span><br><span class="line">    console.log(x);           //10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(10);</span><br></pre></td></tr></table></figure></div>
+<p>代码展示了在<strong>函数体的语句执行之前</strong>，<strong>arguments变量和函数的参数都已经被赋值</strong>。从这里可以看出，<strong>函数每被调用一次，都会产生一个新的执行上下文环境</strong>。因为不同的调用可能就会有不同的参数。</p>
+<p>函数中的自由变量：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var a = 10;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;</span><br><span class="line">    console.log(a);    //自由变量，由函数创建时就确定了取值的作用域</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> bar(f)&#123;</span><br><span class="line">    var a = 20;</span><br><span class="line">    f();     //打印“10”，而不是“20”</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar(fn);</span><br></pre></td></tr></table></figure></div>
+<p>代码展示了，<strong>函数在定义的时候</strong>（不是调用的时候），就已经<strong>确定</strong>了函数体<strong>内部自由变量的作用域</strong>。</p>
+<hr>
+<h3 id="关于上下文环境中的数据情况如下"><a href="#关于上下文环境中的数据情况如下" class="headerlink" title="关于上下文环境中的数据情况如下"></a>关于上下文环境中的数据情况如下</h3><h4 id="全局代码的上下文环境数据内容为："><a href="#全局代码的上下文环境数据内容为：" class="headerlink" title="全局代码的上下文环境数据内容为："></a>全局代码的上下文环境数据内容为：</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通变量（包括函数表达式）</td>
+<td>声明（默认为undefined）</td>
+</tr>
+<tr>
+<td>函数的声明</td>
+<td>赋值</td>
+</tr>
+<tr>
+<td>this</td>
+<td>赋值</td>
+</tr>
+</tbody>
+</table>
+<h4 id="函数体代码的上下文环境数据内容为："><a href="#函数体代码的上下文环境数据内容为：" class="headerlink" title="函数体代码的上下文环境数据内容为："></a>函数体代码的上下文环境数据内容为：</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>函数的参数</td>
+<td>赋值</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>赋值</td>
+</tr>
+<tr>
+<td>自由变量</td>
+<td>赋值</td>
+</tr>
+</tbody>
+</table>
+
+  	
+  
+</div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/31/this/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            this
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2019/03/30/从原型到原型链再到继承/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">从原型到原型链再到继承</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        椿去湫来
+      
+    </h3>
+    <p class="avatar-slogan">
+      如果有来生，我要做一棵树，站成永恒，没有悲欢的姿势。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/31/this/">this</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/执行上下文/">执行上下文</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/从原型到原型链再到继承/">从原型到原型链再到继承</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/30/css中的position属性/">css中的position属性</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/29/正则表达式RegExp/">正则表达式RegExp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 Gzqqqqq &nbsp;&nbsp;
+    Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
