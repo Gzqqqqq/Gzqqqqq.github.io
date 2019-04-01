@@ -10,18 +10,18 @@
   
   
   
-  <meta name="description" content="三者共同作用是： 让函数在某个指定的对象下执行。也就是改变函数体内this的指向。 javaScript权威指南上的解释是： call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。 bind() 就是将某个函数绑定到某个对象上。 call、apply相同点call() 和apply()的第一个参数相同，就是指定的对象。 这个对象就是该函数的执行上下文。即指定th">
+  <meta name="description" content="三者共同作用是： 让函数在某个指定的对象下执行。也就是改变函数体内this的指向。 三者是Function对象自带的三个方法, javaScript权威指南上的解释是： call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。 bind() 就是将某个函数绑定到某个对象上。 call、apply相同点call() 和apply()的第一个参数相同，就是指定的对象。">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="详解call、apply、bind">
 <meta property="og:url" content="http://Gzqqqqq.github.io/public/2019/04/01/详解call、apply、bind/index.html">
 <meta property="og:site_name" content="Gzqqqqq">
-<meta property="og:description" content="三者共同作用是： 让函数在某个指定的对象下执行。也就是改变函数体内this的指向。 javaScript权威指南上的解释是： call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。 bind() 就是将某个函数绑定到某个对象上。 call、apply相同点call() 和apply()的第一个参数相同，就是指定的对象。 这个对象就是该函数的执行上下文。即指定th">
+<meta property="og:description" content="三者共同作用是： 让函数在某个指定的对象下执行。也就是改变函数体内this的指向。 三者是Function对象自带的三个方法, javaScript权威指南上的解释是： call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。 bind() 就是将某个函数绑定到某个对象上。 call、apply相同点call() 和apply()的第一个参数相同，就是指定的对象。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T07:26:38.615Z">
+<meta property="og:updated_time" content="2019-04-01T10:38:08.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详解call、apply、bind">
-<meta name="twitter:description" content="三者共同作用是： 让函数在某个指定的对象下执行。也就是改变函数体内this的指向。 javaScript权威指南上的解释是： call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。 bind() 就是将某个函数绑定到某个对象上。 call、apply相同点call() 和apply()的第一个参数相同，就是指定的对象。 这个对象就是该函数的执行上下文。即指定th">
+<meta name="twitter:description" content="三者共同作用是： 让函数在某个指定的对象下执行。也就是改变函数体内this的指向。 三者是Function对象自带的三个方法, javaScript权威指南上的解释是： call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。 bind() 就是将某个函数绑定到某个对象上。 call、apply相同点call() 和apply()的第一个参数相同，就是指定的对象。">
   
     <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
   
@@ -88,6 +88,7 @@
        
   	
   	  <p>三者共同作用是： 让函数在某个指定的对象下执行。也就是<strong>改变函数体内this的指向</strong>。</p>
+<p>三者是Function对象自带的三个方法,</p>
 <p>javaScript权威指南上的解释是：</p>
 <p>call() 、apply()可以看作是某个对象的方法，通过调用方法的形式来间接调用函数。</p>
 <p>bind() 就是将某个函数绑定到某个对象上。</p>
@@ -217,6 +218,15 @@
 <nav id="article-nav">
   <div class="article-nav-block">
     
+      <a href="/2019/04/01/原生ajax请求过程/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            原生ajax请求过程
+          
+        </div>
+      </a>
+    
   </div>
   <div class="article-nav-block">
     
@@ -304,6 +314,10 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/2019/04/01/原生ajax请求过程/">原生ajax请求过程</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/01/详解call、apply、bind/">详解call、apply、bind</a>
           </li>
         
@@ -317,10 +331,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/2019/03/31/this/">this</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/31/执行上下文/">执行上下文</a>
           </li>
         
       </ul>
