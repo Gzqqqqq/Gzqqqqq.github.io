@@ -18,10 +18,12 @@
 <meta property="og:site_name" content="Gzqqqqq">
 <meta property="og:description" content="Session机制Session原理Session是另一种记录客户状态的机制； 不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。 客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。 客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。 如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-01T13:44:08.445Z">
+<meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/Session/relation.png">
+<meta property="og:updated_time" content="2019-04-02T03:03:19.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Session">
 <meta name="twitter:description" content="Session机制Session原理Session是另一种记录客户状态的机制； 不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。 客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。 客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。 如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话">
+<meta name="twitter:image" content="http://gzqqqqq.github.io/public/2019/04/01/Session/relation.png">
   
     <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
   
@@ -139,6 +141,7 @@
 <p>这类<strong>子窗口会共享父窗口的Cookie</strong>，因此会<strong>共享一个Session</strong>。</p>
 <p><strong>注意</strong>：新开的浏览器窗口会生成新的Session，但子窗口除外。子窗口会共用父窗口的Session。</p>
 <p>例如，在链接上右击，在弹出的快捷菜单中选择“在新窗口中打开”时，子窗口便可以访问父窗口的Session。</p>
+<hr>
 <h3 id="URL地址重写"><a href="#URL地址重写" class="headerlink" title="URL地址重写"></a>URL地址重写</h3><p><strong>URL地址重写</strong>是对<strong>客户端不支持Cookie的解决方案</strong>。</p>
 <p>URL地址重写的<strong>原理是将该用户Session的id信息重写到URL地址中</strong>。</p>
 <p>服务器能够解析重写后的URL获取Session的id。</p>
@@ -204,13 +207,59 @@
 </li>
 <li><p>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能。考虑到减轻服务器性能方面，应当使用COOKIE；</p>
 </li>
-<li><p>单个cookie在客户端的限制是3K，就是说一个站点在客户端存放的COOKIE不能超过3K；</p>
+<li><p>单个cookie在客户端的限制是4K，就是说一个站点在客户端存放的COOKIE不能超过4K；</p>
 </li>
 </ul>
 <p>服务端<strong>执行session机制时候会生成session的id值</strong>，这个id值会发送给客户端；</p>
 <p>客户端每次请求都会把这个id值放到http请求的头部发送给服务端；</p>
 <p>而<strong>这个id值在客户端会保存下来，保存的容器就是cookie</strong>；</p>
 <p>因此当我们完全禁掉浏览器的cookie的时候，服务端的session也会不能正常使用</p>
+<hr>
+<h3 id="session和cookie的关系"><a href="#session和cookie的关系" class="headerlink" title="session和cookie的关系"></a>session和cookie的关系</h3><p>简单点说，每一个session对象都有一个sessionId；</p>
+<p>而在cookie数组中，又一个元素叫做JSESSIONID；</p>
+<p>服务器将session对象的sessionId,以名称叫做JSESSIONID，值为sessionId的形式存入cookie数组中；</p>
+<p>这样cookie和session的关系。</p>
+<p><img src="relation.png" alt="cookie和session的关系"></p>
+<hr>
+<h3 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h3><p><strong>（1）</strong>当我们首次在某个请求中通过调用request.getSession去获取session的时候，</p>
+<p>首先servlet通过getCookie的到本次请求的cookie信息，然后去寻找cookie数组中是否有否有一个名为JSESSIONID的cookie；</p>
+<p>没有的话就创建一个session，并且把sessionId做为JSESSIONID这个cookie的值；</p>
+<p>然后调用addCookie()方法把该cookie放入cookie数组。</p>
+<p><strong>（2）</strong>如果上一步中从cookie数组中取到的cookie数组已经包含了JSESSIONID这个cookie;</p>
+<p>这时我们取出JSESSIONID的值，然后去内存中的session（内存中有很多session）去寻找对应的sessionId为JSESSIONID的值的session;</p>
+<p>如果找得到的话，就使用这个session，找不到的话，就新建一个session，并且同样的调用addCookie()；</p>
+<p>方法覆盖掉原来的JSESSIONID这个cookie的值。</p>
+<hr>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><h4 id="1-当我们清空浏览器的时候，session会消失吗？"><a href="#1-当我们清空浏览器的时候，session会消失吗？" class="headerlink" title="1.当我们清空浏览器的时候，session会消失吗？"></a>1.当我们清空浏览器的时候，session会消失吗？</h4><p>此问题与session无关。</p>
+<p>你清除浏览器缓存，只是清除了cookie。</p>
+<p>然而我们不能访问网站需要重新登陆的原因如下：</p>
+<p>因为清空了浏览器缓存，这时候cookie数组中必定不会有JSESSIONID这个cookie，所以必须得新建一个session；</p>
+<p>用新的sessionId来给JSESSIONID这个cookie赋值。</p>
+<p>由于是新建的session，session中必定没有userId这样的属性值，所以判断结果自然为空，所以需要重新登录。</p>
+<p>这次赋值以后，下一次再请求该网站的时候，由于cookie数组中已经有了JSESSIONID这个cookie；</p>
+<p>并且能通过该JSESSIONID的值找到相应的session，所以就不需要再重新登录了。</p>
+<hr>
+<h4 id="2-讨论几种极端情况"><a href="#2-讨论几种极端情况" class="headerlink" title="2.讨论几种极端情况"></a>2.讨论几种极端情况</h4><p><strong>第一种：当项目正常运行，我们清空浏览器</strong>，cookie和session会发生什么变化。</p>
+<p>因为清空了浏览器，所以不会存在JSESSIONID这个cookie，servlet无法找到对应的session，所以他会新建一个session；</p>
+<p>然后在本次请求的响应中将sessionId传入cookie中。</p>
+<p>下一次请求，cookie数组中就带有JSESSIONID这个cookie了，servlet就可以找到对应的session，沿用即可。</p>
+<p><strong>第二种：浏览器正常，项目重启</strong>（可停止tomcat来模拟这种情况），cookie和session会发生什么变化。</p>
+<p>因为项目重启，内存中的一切session都消失了，虽然访问一个action，请求头中有JSESSIONID这个cookie；</p>
+<p>但是通过它的值（sessionId）并不能找到session（因为根本没有任何session）；</p>
+<p>所以还是得重新创建一个session，并且这个session的sessionId跟当前cookie数组中的JSESSIONID的值不一样；</p>
+<p>所以它会将新的sessionId覆盖掉cookie数组中原来的JSESSIONID，并且由于此时的session是崭新的；</p>
+<p>所以他不可能有userId这样的属性值，所以在拦截的时候依然会被截获，因此也是需要重新登录的。</p>
+<hr>
+<h3 id="Session的应用"><a href="#Session的应用" class="headerlink" title="Session的应用"></a>Session的应用</h3><ul>
+<li><p>网上商城中的购物车</p>
+</li>
+<li><p>保存用户登录信息</p>
+</li>
+<li><p>将某些数据放入session中，供同一用户的不同页面使用</p>
+</li>
+<li><p>防止用户非法登录</p>
+</li>
+</ul>
 
   	
   
@@ -225,6 +274,15 @@
     
 <nav id="article-nav">
   <div class="article-nav-block">
+    
+      <a href="/2019/04/02/Web存储机制/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            Web存储机制
+          
+        </div>
+      </a>
     
   </div>
   <div class="article-nav-block">
@@ -282,7 +340,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储机制/">存储机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
     </div>
   </div>
 
@@ -292,7 +350,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+      <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/存储机制/" style="font-size: 10px;">存储机制</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
     </div>
   </div>
 
@@ -313,6 +371,10 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/2019/04/02/Web存储机制/">Web存储机制</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/01/Session/">Session</a>
           </li>
         
@@ -326,10 +388,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/2019/04/01/详解call、apply、bind/">详解call、apply、bind</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/31/闭包/">闭包</a>
           </li>
         
       </ul>

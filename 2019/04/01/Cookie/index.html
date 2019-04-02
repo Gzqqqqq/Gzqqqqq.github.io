@@ -20,7 +20,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/Cookie/Cookie通讯.png">
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/Cookie/cookie1.png">
-<meta property="og:updated_time" content="2019-04-01T12:42:19.671Z">
+<meta property="og:updated_time" content="2019-04-02T03:00:58.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cookie">
 <meta name="twitter:description" content="会话（Session）跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。 常用的会话跟踪技术是Cookie与Session。 Cookie通过在客户端记录信息确定用户身份； Session通过在服务器端记录信息确定用户身份。 Cookie机制cookie原理由于http是无状态的协议，一旦客户端和服务器的数据交换完毕，就会断开连接，再次请求，会重新连接； 这就说明服务器单从网络连接上是没有办法">
@@ -193,6 +193,18 @@
 <p><strong>禁止javascript操作cookie</strong></p>
 <p>（为<strong>避免跨域脚本(xss)攻击</strong>，通过javascript的document.cookie无法访问带有HttpOnly标记的cookie。）</p>
 <div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="BASH"><figure class="iseeu highlight /bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2017 07:28:00 GMT; Secure; HttpOnly</span><br></pre></td></tr></table></figure></div>
+<hr>
+<h3 id="Cookie应用场景"><a href="#Cookie应用场景" class="headerlink" title="Cookie应用场景"></a>Cookie应用场景</h3><ul>
+<li><p>判断用户是否登陆过网站，以便下次登录时能够实现自动登录（或者记住密码）。</p>
+<p>  如果我们删除cookie，则每次登录必须从新填写登录的相关信息。</p>
+</li>
+<li><p>保存上次登录的时间等信息。</p>
+</li>
+<li><p>保存上次查看的页面</p>
+</li>
+<li><p>浏览计数</p>
+</li>
+</ul>
 
   	
   
@@ -273,7 +285,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cookie/">Cookie</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Session/">Session</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储机制/">存储机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/样例/">样例</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/私人/">私人</a></li></ul>
     </div>
   </div>
 
@@ -283,7 +295,7 @@ gitment.render('gitmentContainer')
   <div class="widget-box">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
+      <a href="/tags/Cookie/" style="font-size: 10px;">Cookie</a> <a href="/tags/DOM/" style="font-size: 10px;">DOM</a> <a href="/tags/Session/" style="font-size: 10px;">Session</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/存储机制/" style="font-size: 10px;">存储机制</a> <a href="/tags/样例/" style="font-size: 10px;">样例</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/私人/" style="font-size: 10px;">私人</a>
     </div>
   </div>
 
@@ -304,6 +316,10 @@ gitment.render('gitmentContainer')
       <ul>
         
           <li>
+            <a href="/2019/04/02/Web存储机制/">Web存储机制</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/01/Session/">Session</a>
           </li>
         
@@ -317,10 +333,6 @@ gitment.render('gitmentContainer')
         
           <li>
             <a href="/2019/04/01/详解call、apply、bind/">详解call、apply、bind</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/31/闭包/">闭包</a>
           </li>
         
       </ul>
