@@ -10,13 +10,13 @@
   
   
   
-  <meta name="description" content="AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件. 这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的. 一次完整的AJAX请求大致需要经历以下步">
+  <meta name="description" content="AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件. 这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的.  Ajax的工作原理是我们发送的一个异步">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原生ajax请求过程">
 <meta property="og:url" content="http://Gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/index.html">
 <meta property="og:site_name" content="Gzqqqqq">
-<meta property="og:description" content="AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件. 这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的. 一次完整的AJAX请求大致需要经历以下步">
+<meta property="og:description" content="AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件. 这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的.  Ajax的工作原理是我们发送的一个异步">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/ajax.png">
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/ajax1.png">
@@ -26,10 +26,10 @@
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/ajxa5.png">
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/ajax封装复用.png">
 <meta property="og:image" content="http://gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/ajax复用.png">
-<meta property="og:updated_time" content="2019-04-01T10:45:30.150Z">
+<meta property="og:updated_time" content="2019-04-22T02:50:17.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生ajax请求过程">
-<meta name="twitter:description" content="AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件. 这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的. 一次完整的AJAX请求大致需要经历以下步">
+<meta name="twitter:description" content="AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件. 这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，通过本地的资源文件管理器开启的文件是不支持AJAX的.  Ajax的工作原理是我们发送的一个异步">
 <meta name="twitter:image" content="http://gzqqqqq.github.io/public/2019/04/01/原生ajax请求过程/ajax.png">
   
     <link rel="alternate" href="/atom.xml" title="Gzqqqqq" type="application/atom+xml">
@@ -98,6 +98,16 @@
   	
   	  <p>AJAX就是将获取到的内容以异步的方式被我们操作，通过AJAX可以获取HTML、XML、纯文本、JSON、图片、脚本等一切可以被浏览器识别的文件.</p>
 <p>这个操作所获取的内容都是从服务器上来的，这里的服务器不一定是一个实实在在的服务器，但必须是一个具有HTTP协议的服务器环境，包括本地服务localhost，<strong>通过本地的资源文件管理器开启的文件是不支持AJAX的</strong>.</p>
+<hr>
+<h3 id="Ajax的工作原理"><a href="#Ajax的工作原理" class="headerlink" title="Ajax的工作原理"></a>Ajax的工作原理</h3><p>是我们<strong>发送的一个异步请求</strong>，也就是说客户端是不会感觉到的。</p>
+<p>在发送这个请求的时候我们<strong>绑定了一个监听事件</strong>，这个事件会监控我们发送请求的状态，并且每次状态改变都会触发；</p>
+<p>所以我们就可以<strong>根据不同的状态让他执行不同的操作</strong>。</p>
+<p>请求到达服务器端的后服务器端<strong>根据相应的请求返回对应的信息</strong>；</p>
+<p>并且这个返回<strong>信息是通过异步得到</strong>，<strong>不会引起客户端刷新</strong>。</p>
+<p>因为已经绑定了监控状态变化的事件，所以我们要提前定义返回信息时对信息的处理方法；</p>
+<p>如果失败也会有相应的状态，我们也会做出相应的处理，</p>
+<p>我们在处理中得到返回信息通过javascript在客户端做相应操作即可。</p>
+<hr>
 <h4 id="一次完整的AJAX请求大致需要经历以下步骤："><a href="#一次完整的AJAX请求大致需要经历以下步骤：" class="headerlink" title="一次完整的AJAX请求大致需要经历以下步骤："></a>一次完整的AJAX请求大致需要经历以下步骤：</h4><ul>
 <li><p>创建AJAX对象</p>
 </li>
